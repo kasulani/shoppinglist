@@ -1,4 +1,5 @@
 # ShoppingList
+`travis-web`
 ## About
 This is an application that allows to record and share things they want
 to spend money on and keep track of their shopping lists.
@@ -14,7 +15,7 @@ shopping lists with others.
 - Extra: You can share your shopping list with your friends and have fun!
 ## Requirements
 - Python 2.7.1x+. preferably use Python 3.x.x+
-### Tools
+## Tools
 Tools used during the development of this application are;
 - [Balsamiq](https://balsamiq.com/) - this is a wireframing tool
 - [Flask](http://flask.pocoo.org/) - this is a python microframework
@@ -22,7 +23,9 @@ Tools used during the development of this application are;
 - [postgresql](https://www.postgresql.org/) - this is a database server
 - [React](https://facebook.github.io/react/) - this is a java script library
 to build user interfaces
-### TODO
+## Tests
+todo: Put here text on how to run tests for this application
+## TODO
 - build a wireframe
 - build UML classes
 - build a frontend designs in HTML/CSS
