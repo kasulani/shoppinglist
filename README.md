@@ -23,7 +23,11 @@ Tools used during the development of this application are;
 - [React](https://facebook.github.io/react/) - this is a java script library
 to build user interfaces
 ## Tests
-todo: Put here text on how to run tests for this application
+To run tests, go to your command line prompt and execute the following command
+```sh
+   $ cd shoppinglist
+   $ python test_shoppinglist.py
+```
 ## TODO
 - build a wireframe
 - build UML classes
