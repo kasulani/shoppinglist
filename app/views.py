@@ -27,7 +27,9 @@ def dashboard():
 def shopping_list():
     return render_template('shoppinglist.html')
 
+
 @app.route('/shoppinglistitem', methods=['GET', 'POST'])
 def shopping_list_item():
     return render_template('shoppinglistitem.html')
+
 
