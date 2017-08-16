@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}ShoppingList | Sign up{% endblock %}
+{% block content %}
+<div class="container">
+		<div class="masthead">
+        <nav>
+          <ul class="nav nav-justified">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Team</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Downloads</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+		<div class="row">
+        <div class="col-lg-6">
+			<h1 class="margin-base-vertical">Sign Up</h1>
+			<p>Create a Shopping List account</p>
+			<p>
+				You can create an account to start having fun and we promise it will take a short time
+			</p>
+        </div>
+        <div class="col-lg-4">
+          <form class="margin-base-vertical">
+			  <p class="input-group">
+				  <span class="input-group-addon"><span class="icon-user"></span></span>
+				  <input type="text" class="form-control input-lg" name="username" placeholder="enter your user name here" />
+			  </p>
+			  <p class="input-group">
+				  <span class="input-group-addon"><span class="icon-envelope"></span></span>
+				  <input type="text" class="form-control input-lg" name="email" placeholder="enter your email address here" />
+			  </p>
+			  <p class="input-group">
+				  <span class="input-group-addon"><span class="icon-lock"></span></span>
+				  <input type="text" class="form-control input-lg" name="password1" placeholder="enter your password here" />
+			  </p>
+			  <p class="input-group">
+				  <span class="input-group-addon"><span class="icon-lock"></span></span>
+				  <input type="text" class="form-control input-lg" name="password2" placeholder="enter your password again here" />
+			  </p>
+			  <p>
+				  <button type="submit" class="btn btn-success btn-lg">create account</button>
+			  </p>
+		  </form>
+       </div>
+      </div>
+		<!-- Site footer -->
+      <footer class="footer">
+        <p>&copy; 2016 Make.Create.Invent, Inc.</p>
+      </footer>
+</div> <!-- //container -->
+{% endblock %}}

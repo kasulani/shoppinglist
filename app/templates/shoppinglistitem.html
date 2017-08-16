@@ -1,0 +1,38 @@
+{% extends "base_2.html" %}
+{% block title %}Shopping List | {Name of list here}{% endblock %}
+{% block custom_style %}<link href="../static/css/dashboard.css" rel="stylesheet">{% endblock %}
+{% block content %}
+<div class="col-sm-9 col-sm-offset-3 col-md-4 col-md-offset-2 main">
+    <h4> { name of shopping list here }</h4>
+    <!-- form start -->
+    <form role="form">
+        <div class="box-body">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Item name</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter item name here">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="password" class="form-control" id="description" placeholder="Enter a short description for item">
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"> Status
+                </label>
+            </div>
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-primary">Add Item</button>
+        </div>
+    </form>
+</div>
+<div class="col-sm-9 col-md-4 main">
+    <div>
+        <ul class="nav nav-pills nav-stacked">
+            <li><a href="#"><i class="fa fa-inbox"></i>Add a new item</a></li>
+            <li><a href="#"><i class="fa fa-envelope-o"></i>Delete this item</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

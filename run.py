@@ -1,3 +1,3 @@
-from shoppinglist import shoppinglist_app
+from app import app
 
-shoppinglist_app.run(debug=True)
+app.run(debug=True)

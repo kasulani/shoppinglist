@@ -1,0 +1,57 @@
+{% extends "base_2.html" %}
+{% block title %}Shopping List | Dashboard{% endblock %}
+{% block custom_style %}<link href="../static/css/dashboard.css" rel="stylesheet">{% endblock %}
+{% block content %}
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Welcome</h1>
+
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>{user full name here}</h4>
+              <span class="text-muted">Profile Picture</span>
+            </div>
+          </div>
+
+          <h2 class="sub-header">Your shopping list</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Shopping list</th>
+                  <th>No of items</th>
+                  <th>Owner</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Dooms day</td>
+                  <td>20</td>
+                  <td>you</td>
+                  <td>pending</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>House party</td>
+                  <td>60</td>
+                  <td>you</td>
+                  <td>Cleared</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Camping out doors</td>
+                  <td>78</td>
+                  <td>you</td>
+                  <td>pending</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}
+
