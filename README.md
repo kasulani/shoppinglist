@@ -28,9 +28,6 @@ To run tests, go to your command line prompt and execute the following command
    $ cd shoppinglist/app
    $ python test_models.py
 ```
-## TODO
-- build a wireframe
-- build UML classes
-- build a frontend designs in HTML/CSS
-- write tests
-- create a [Pivotal tracker board](https://www.pivotaltracker.com/)
+## Non-Persistent data
+This branch of shopping list application implements a prototype that uses non persistent data so that
+means that the data will be lost when the application is closed.
