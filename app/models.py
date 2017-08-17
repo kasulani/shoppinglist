@@ -228,7 +228,7 @@ class ShoppingListApp(object):
         :return: bool to indicate if the login was successful or not
         """
         login_this_user = False
-        if self.user_dict[username] == password:
+        if self.user_dict.has_key(username) and self.user_dict[username] == password:
             login_this_user = True  # user found, login this user
 
         return login_this_user

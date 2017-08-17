@@ -31,3 +31,9 @@ To run tests, go to your command line prompt and execute the following command
 ## Non-Persistent data
 This branch of shopping list application implements a prototype that uses non persistent data so that
 means that the data will be lost when the application is closed.
+## Running the application
+To run this application in linux, execute the following command
+```sh
+    $ cd shoppinglist
+    $ nohup python run.py > logs/shop.log 2>&1>> logs/shop.log & disown
+```

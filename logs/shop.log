@@ -1,2 +1,139 @@
 [2017-08-17 12:08:59,011] {run.py:3} DEBUG - Starting Shopping List application...
 
+[2017-08-17 12:39:13,498] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 12:48:34,873] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 12:49:10,774] {/root/Projects/andela/shoppinglist/app/views.py:23} DEBUG - request data <Request 'http://127.0.0.1:5000/signup' [GET]>
+[2017-08-17 12:49:28,459] {/root/Projects/andela/shoppinglist/app/views.py:23} DEBUG - request data <Request 'http://127.0.0.1:5000/signup' [GET]>
+[2017-08-17 12:49:58,299] {/root/Projects/andela/shoppinglist/app/views.py:23} DEBUG - request data <Request 'http://127.0.0.1:5000/signup' [GET]>
+[2017-08-17 12:52:34,339] {/root/Projects/andela/shoppinglist/app/views.py:23} DEBUG - request data <Request 'http://127.0.0.1:5000/signup' [GET]>
+[2017-08-17 12:53:00,457] {/root/Projects/andela/shoppinglist/app/views.py:23} DEBUG - request data <Request 'http://127.0.0.1:5000/signup' [GET]>
+[2017-08-17 12:53:23,041] {/root/Projects/andela/shoppinglist/app/views.py:23} DEBUG - request data <Request 'http://127.0.0.1:5000/signup' [POST]>
+[2017-08-17 12:54:37,909] {/root/Projects/andela/shoppinglist/app/views.py:23} DEBUG - request data <Request 'http://127.0.0.1:5000/signup' [GET]>
+[2017-08-17 12:55:35,979] {/root/Projects/andela/shoppinglist/app/views.py:23} DEBUG - request data <Request 'http://127.0.0.1:5000/signup' [POST]>
+[2017-08-17 12:57:53,506] {/root/Projects/andela/shoppinglist/app/views.py:23} DEBUG - request data <Request 'http://127.0.0.1:5000/signup' [POST]>
+[2017-08-17 12:58:45,155] {/root/Projects/andela/shoppinglist/app/views.py:23} DEBUG - request data <Request 'http://127.0.0.1:5000/signup' [POST]>
+[2017-08-17 13:00:07,104] {/root/Projects/andela/shoppinglist/app/views.py:23} DEBUG - request data <Request 'http://127.0.0.1:5000/signup' [POST]>
+[2017-08-17 13:00:39,696] {/root/Projects/andela/shoppinglist/app/views.py:23} DEBUG - request data <Request 'http://127.0.0.1:5000/signup' [POST]>
+[2017-08-17 13:01:19,991] {/root/Projects/andela/shoppinglist/app/views.py:23} DEBUG - request data <Request 'http://127.0.0.1:5000/signup' [POST]>
+[2017-08-17 13:10:52,592] {/root/Projects/andela/shoppinglist/app/views.py:23} DEBUG - request data <Request 'http://127.0.0.1:5000/signup' [POST]>
+[2017-08-17 13:12:26,068] {/root/Projects/andela/shoppinglist/app/views.py:23} DEBUG - request data <Request 'http://127.0.0.1:5000/signup' [POST]>
+[2017-08-17 13:13:17,323] {/root/Projects/andela/shoppinglist/app/views.py:23} DEBUG - request data <Request 'http://127.0.0.1:5000/signup' [POST]>
+[2017-08-17 13:14:22,288] {/root/Projects/andela/shoppinglist/app/views.py:23} DEBUG - request data <Request 'http://127.0.0.1:5000/signup' [POST]>
+[2017-08-17 13:14:40,907] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 13:19:33,194] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 13:19:33,194] {run.py:4} DEBUG - index requested
+[2017-08-17 13:20:00,510] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 13:20:00,511] {run.py:4} DEBUG - index requested
+[2017-08-17 13:20:00,664] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 13:20:00,665] {run.py:4} DEBUG - index requested
+[2017-08-17 13:20:16,027] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 13:20:23,567] {/root/Projects/andela/shoppinglist/app/views.py:13} DEBUG - index requested
+[2017-08-17 13:20:41,574] {/root/Projects/andela/shoppinglist/app/views.py:24} DEBUG - request data here
+[2017-08-17 13:21:32,728] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 13:21:52,835] {/root/Projects/andela/shoppinglist/app/views.py:24} DEBUG - request data here POST
+[2017-08-17 13:22:28,424] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 13:23:31,418] {/root/Projects/andela/shoppinglist/app/views.py:24} DEBUG - request data here ImmutableMultiDict([('username', u'kasulani'), ('password1', u'king12'), ('password2', u'king12'), ('email', u'kasulani@gmail.com')])
+[2017-08-17 13:24:16,385] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 13:39:05,730] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 13:42:40,292] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 13:43:23,788] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 14:19:51,358] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 14:19:51,504] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 14:19:54,796] {/root/Projects/andela/shoppinglist/app/views.py:28} DEBUG - Signup: POST data ImmutableMultiDict([])
+[2017-08-17 14:20:14,612] {/root/Projects/andela/shoppinglist/app/views.py:28} DEBUG - Signup: POST data ImmutableMultiDict([('username', u'kasulani'), ('password1', u'king12'), ('password2', u'king12'), ('email', u'kasulani@gmail.com')])
+[2017-08-17 14:20:14,613] {/root/Projects/andela/shoppinglist/app/views.py:43} DEBUG - user with username kasulani registered successfully
+[2017-08-17 14:20:14,704] {/root/Projects/andela/shoppinglist/app/views.py:17} DEBUG - index requested
+[2017-08-17 14:22:29,679] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 14:23:11,143] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 14:27:13,979] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 14:27:14,126] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 14:28:48,947] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 14:29:32,407] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 14:29:38,601] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 14:30:50,665] {/root/Projects/andela/shoppinglist/app/views.py:42} DEBUG - Signup: POST data ImmutableMultiDict([('username', u'kasulani'), ('password1', u'king12'), ('password2', u'king12'), ('email', u'kasulani@gmail.com')])
+[2017-08-17 14:30:50,665] {/root/Projects/andela/shoppinglist/app/views.py:55} DEBUG - user with username kasulani registered successfully
+[2017-08-17 14:32:37,930] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 14:33:24,444] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 14:33:55,832] {/root/Projects/andela/shoppinglist/app/views.py:31} DEBUG - Signup: POST data ImmutableMultiDict([('username', u'kasulani'), ('password1', u'king12'), ('password2', u'king12'), ('email', u'kasulani@gmail.com')])
+[2017-08-17 14:33:55,832] {/root/Projects/andela/shoppinglist/app/views.py:44} DEBUG - user with username kasulani registered successfully
+[2017-08-17 14:34:36,151] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 14:35:50,855] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 14:36:08,156] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 14:36:33,314] {/root/Projects/andela/shoppinglist/app/views.py:42} DEBUG - Signup: POST data ImmutableMultiDict([('username', u'kasulani'), ('password1', u'king12'), ('password2', u'king12'), ('email', u'kasulani@gmail.com')])
+[2017-08-17 14:36:33,315] {/root/Projects/andela/shoppinglist/app/views.py:55} DEBUG - user with username kasulani registered successfully
+[2017-08-17 14:40:20,997] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 14:40:53,110] {/root/Projects/andela/shoppinglist/app/views.py:18} DEBUG - Index: POST data <Request 'http://127.0.0.1:5000/' [GET]>
+[2017-08-17 14:43:14,348] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 14:43:27,940] {/root/Projects/andela/shoppinglist/app/views.py:18} DEBUG - Index: POST data <Request 'http://127.0.0.1:5000/' [GET]>
+[2017-08-17 14:43:43,919] {/root/Projects/andela/shoppinglist/app/views.py:18} DEBUG - Index: POST data <Request 'http://127.0.0.1:5000/index' [POST]>
+[2017-08-17 14:43:43,922] {/root/Projects/andela/shoppinglist/app/views.py:20} DEBUG - Index: POST data ImmutableMultiDict([('username', u'kasulani'), ('password', u'king123')])
+[2017-08-17 14:44:15,993] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 14:44:44,372] {/root/Projects/andela/shoppinglist/app/views.py:19} DEBUG - Index: POST data ImmutableMultiDict([('username', u'kasulani'), ('password', u'king12')])
+[2017-08-17 14:46:32,052] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 14:47:34,697] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 14:47:51,258] {/root/Projects/andela/shoppinglist/app/views.py:20} DEBUG - Index: POST data ImmutableMultiDict([('username', u'kasulani'), ('password', u'king12')])
+[2017-08-17 14:47:51,258] {/root/Projects/andela/shoppinglist/app/views.py:30} ERROR - failed to login user with username: kasulani
+[2017-08-17 14:49:51,406] {/root/Projects/andela/shoppinglist/app/views.py:44} DEBUG - Signup: POST data ImmutableMultiDict([('username', u'kasulani'), ('password1', u'king12'), ('password2', u'king12'), ('email', u'kasulani@gmail.com')])
+[2017-08-17 14:49:51,407] {/root/Projects/andela/shoppinglist/app/views.py:57} DEBUG - user with username kasulani registered successfully
+[2017-08-17 14:50:03,231] {/root/Projects/andela/shoppinglist/app/views.py:20} DEBUG - Index: POST data ImmutableMultiDict([('username', u'kasulani'), ('password', u'king12')])
+[2017-08-17 14:50:03,231] {/root/Projects/andela/shoppinglist/app/views.py:26} DEBUG - successfully logged in user with username: kasulani and now redirecting user to dashboard
+[2017-08-17 14:51:42,518] {/root/Projects/andela/shoppinglist/app/views.py:20} DEBUG - Index: POST data ImmutableMultiDict([('username', u'kasulani'), ('password', u'king')])
+[2017-08-17 14:51:42,518] {/root/Projects/andela/shoppinglist/app/views.py:30} ERROR - failed to login user with username: kasulani
+[2017-08-17 14:55:57,250] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 14:56:05,503] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 14:56:37,907] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 14:57:17,364] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 14:57:36,674] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 14:58:19,180] {/root/Projects/andela/shoppinglist/app/views.py:25} DEBUG - Index: POST data ImmutableMultiDict([('username', u'kasulani'), ('password', u'king12')])
+[2017-08-17 14:58:19,181] {/root/Projects/andela/shoppinglist/app/views.py:36} ERROR - failed to login user with username: kasulani
+[2017-08-17 14:59:13,327] {/root/Projects/andela/shoppinglist/app/views.py:50} DEBUG - Signup: POST data ImmutableMultiDict([('username', u'kasulani'), ('password1', u'king12'), ('password2', u'king12'), ('email', u'kasulani@gmail.com')])
+[2017-08-17 14:59:13,327] {/root/Projects/andela/shoppinglist/app/views.py:63} DEBUG - user with username kasulani registered successfully
+[2017-08-17 14:59:31,055] {/root/Projects/andela/shoppinglist/app/views.py:25} DEBUG - Index: POST data ImmutableMultiDict([('username', u'kasulani'), ('password', u'king12')])
+[2017-08-17 14:59:31,057] {/root/Projects/andela/shoppinglist/app/views.py:32} DEBUG - successfully logged in user with username: kasulani and now redirecting user to dashboard
+[2017-08-17 15:00:12,835] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 15:01:01,354] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 15:01:38,780] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 15:02:07,540] {/root/Projects/andela/shoppinglist/app/views.py:45} DEBUG - Signup: POST data ImmutableMultiDict([('username', u'kasulani'), ('password1', u'king12'), ('password2', u'king12'), ('email', u'kasulani@gmail.com')])
+[2017-08-17 15:02:07,540] {/root/Projects/andela/shoppinglist/app/views.py:58} DEBUG - user with username kasulani registered successfully
+[2017-08-17 15:02:21,115] {/root/Projects/andela/shoppinglist/app/views.py:20} DEBUG - Index: POST data ImmutableMultiDict([('username', u'kasulani'), ('password', u'king12')])
+[2017-08-17 15:02:21,116] {/root/Projects/andela/shoppinglist/app/views.py:27} DEBUG - successfully logged in user with username: kasulani and now redirecting user to dashboard

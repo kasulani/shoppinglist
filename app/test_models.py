@@ -7,7 +7,7 @@
     This file contains all the tests for the classes in the shopping list application
 """
 import unittest
-from app.models import ListItem, ShoppingList, User, ShoppingListApp
+from models import ListItem, ShoppingList, User, ShoppingListApp
 
 
 class ListItemTest(unittest.TestCase):

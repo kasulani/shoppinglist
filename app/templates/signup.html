@@ -23,7 +23,13 @@
 			</p>
         </div>
         <div class="col-lg-4">
-          <form class="margin-base-vertical">
+			 {% if error %}
+                <div class=" alert alert-danger alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                    <p class="error">{{ error }}</p>
+                </div>
+		  	{% endif %}
+          <form class="margin-base-vertical" action="/signup" method="post">
 			  <p class="input-group">
 				  <span class="input-group-addon"><span class="icon-user"></span></span>
 				  <input type="text" class="form-control input-lg" name="username" placeholder="enter your user name here" />
@@ -34,11 +40,11 @@
 			  </p>
 			  <p class="input-group">
 				  <span class="input-group-addon"><span class="icon-lock"></span></span>
-				  <input type="text" class="form-control input-lg" name="password1" placeholder="enter your password here" />
+				  <input type="password" class="form-control input-lg" name="password1" placeholder="enter your password here" />
 			  </p>
 			  <p class="input-group">
 				  <span class="input-group-addon"><span class="icon-lock"></span></span>
-				  <input type="text" class="form-control input-lg" name="password2" placeholder="enter your password again here" />
+				  <input type="password" class="form-control input-lg" name="password2" placeholder="enter your password again here" />
 			  </p>
 			  <p>
 				  <button type="submit" class="btn btn-success btn-lg">create account</button>
