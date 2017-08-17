@@ -8,19 +8,11 @@
         <div class="box-body">
             <div class="form-group">
                 <label for="listname">Name for your list</label>
-                {% if a_list %}
-                <input type="text" value={{a_list[0]}} class="form-control" name="title" id="listname" placeholder="Enter a name for your shopping list">
-                {% else %}
                 <input type="text" class="form-control" name="title" id="listname" placeholder="Enter a name for your shopping list">
-                {% endif %}
             </div>
             <div class="form-group">
                 <label for="iddescription">Description</label>
-                {% if a_list %}
-                <input type="text" value={{a_list[1]}} class="form-control" name="description" id="iddescription" placeholder="Enter a short description for your shopping list">
-                {% else %}
                 <input type="text" class="form-control" name="description" id="iddescription" placeholder="Enter a short description for your shopping list">
-                {% endif %}
             </div>
         </div>
 

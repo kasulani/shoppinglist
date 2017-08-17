@@ -108,7 +108,7 @@ def add_list():
     return render_template('shoppinglist.html')
 
 
-@app.route('/edit/list/<list_id>', methods=['GET'])
+@app.route('/edit/list/<list_id>', methods=['POST', 'GET'])
 def edit_list(list_id):
     """
     This route will update a shopping list for a particular user
@@ -120,7 +120,7 @@ def edit_list(list_id):
     # get a list model
     the_list = user.get_shopping_list(list_id=int(list_id))
     a_list = [the_list.name, the_list.description]
-    return render_template('shoppinglist.html', a_list=a_list)
+    return render_template('editshoppinglist.html', a_list=a_list)
 
 
 @app.route('/delete/list/<list_id>', methods=['GET'])

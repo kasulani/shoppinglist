@@ -1,4 +1,5 @@
 # ShoppingList
+[![Build Status](https://travis-ci.org/kasulani/Shoppinglist.svg?branch=master)](https://travis-ci.org/kasulani/shoppinglist)
 ## About
 This is an application that allows to record and share things they want
 to spend money on and keep track of their shopping lists.
