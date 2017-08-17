@@ -137,3 +137,187 @@
 [2017-08-17 15:02:07,540] {/root/Projects/andela/shoppinglist/app/views.py:58} DEBUG - user with username kasulani registered successfully
 [2017-08-17 15:02:21,115] {/root/Projects/andela/shoppinglist/app/views.py:20} DEBUG - Index: POST data ImmutableMultiDict([('username', u'kasulani'), ('password', u'king12')])
 [2017-08-17 15:02:21,116] {/root/Projects/andela/shoppinglist/app/views.py:27} DEBUG - successfully logged in user with username: kasulani and now redirecting user to dashboard
+[2017-08-17 15:22:14,045] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 15:24:22,662] {/root/Projects/andela/shoppinglist/app/views.py:46} DEBUG - Signup: POST data ImmutableMultiDict([('username', u'kasulani'), ('password1', u'king12'), ('password2', u'king12'), ('email', u'kasulani@gmail.com')])
+[2017-08-17 15:24:22,663] {/root/Projects/andela/shoppinglist/app/views.py:59} DEBUG - user with username kasulani registered successfully
+[2017-08-17 15:24:33,553] {/root/Projects/andela/shoppinglist/app/views.py:20} DEBUG - Index: POST data ImmutableMultiDict([('username', u'kasulani'), ('password', u'king12')])
+[2017-08-17 15:24:33,554] {/root/Projects/andela/shoppinglist/app/views.py:27} DEBUG - successfully logged in user with username: kasulani and now redirecting user to dashboard
+[2017-08-17 15:26:38,985] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 15:32:50,672] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 16:17:55,495] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 16:17:55,638] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 16:20:53,847] {/root/Projects/andela/shoppinglist/app/views.py:48} DEBUG - Signup: POST data ImmutableMultiDict([('username', u'kasulani'), ('password1', u'king12'), ('password2', u'king12'), ('email', u'kasulani@gmail.com')])
+[2017-08-17 16:20:53,848] {/root/Projects/andela/shoppinglist/app/views.py:61} DEBUG - user with username kasulani registered successfully
+[2017-08-17 16:21:02,543] {/root/Projects/andela/shoppinglist/app/views.py:21} DEBUG - Index: POST data ImmutableMultiDict([('username', u'kasulani'), ('password', u'king12')])
+[2017-08-17 16:21:02,544] {/root/Projects/andela/shoppinglist/app/views.py:30} DEBUG - successfully logged in user with username: kasulani and now redirecting user to dashboard
+[2017-08-17 16:25:18,338] {/root/Projects/andela/shoppinglist/app/views.py:96} DEBUG - Create List: POST data ImmutableMultiDict([('description', u'my dooms day preparation list'), ('title', u'dooms day')])
+[2017-08-17 16:25:49,863] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 16:27:44,403] {/root/Projects/andela/shoppinglist/app/views.py:48} DEBUG - Signup: POST data ImmutableMultiDict([('username', u'kasulani'), ('password1', u'king12'), ('password2', u'king12'), ('email', u'kasulani@gmail.com')])
+[2017-08-17 16:27:44,403] {/root/Projects/andela/shoppinglist/app/views.py:61} DEBUG - user with username kasulani registered successfully
+[2017-08-17 16:27:54,810] {/root/Projects/andela/shoppinglist/app/views.py:21} DEBUG - Index: POST data ImmutableMultiDict([('username', u'kasulani'), ('password', u'king12')])
+[2017-08-17 16:27:54,813] {/root/Projects/andela/shoppinglist/app/views.py:30} DEBUG - successfully logged in user with username: kasulani and now redirecting user to dashboard
+[2017-08-17 16:28:17,669] {/root/Projects/andela/shoppinglist/app/views.py:96} DEBUG - Create List: POST data ImmutableMultiDict([('description', u'my dooms day preparation list'), ('title', u'dooms day')])
+[2017-08-17 16:28:59,180] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 16:31:09,108] {/root/Projects/andela/shoppinglist/app/views.py:48} DEBUG - Signup: POST data ImmutableMultiDict([('username', u'kasulani'), ('password1', u'king12'), ('password2', u'king12'), ('email', u'kasulani@gmail.com')])
+[2017-08-17 16:31:09,109] {/root/Projects/andela/shoppinglist/app/views.py:61} DEBUG - user with username kasulani registered successfully
+[2017-08-17 16:31:16,820] {/root/Projects/andela/shoppinglist/app/views.py:21} DEBUG - Index: POST data ImmutableMultiDict([('username', u'kasulani'), ('password', u'king12')])
+[2017-08-17 16:31:16,820] {/root/Projects/andela/shoppinglist/app/views.py:30} DEBUG - successfully logged in user with username: kasulani and now redirecting user to dashboard
+[2017-08-17 16:31:52,660] {/root/Projects/andela/shoppinglist/app/views.py:96} DEBUG - Create List: POST data ImmutableMultiDict([('description', u'my dooms day preparation list'), ('title', u'dooms day')])
+[2017-08-17 16:33:09,714] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 16:33:37,691] {/root/Projects/andela/shoppinglist/app/views.py:48} DEBUG - Signup: POST data ImmutableMultiDict([('username', u'kasulani'), ('password1', u'king12'), ('password2', u'king12'), ('email', u'kasulani@gmail.com')])
+[2017-08-17 16:33:37,692] {/root/Projects/andela/shoppinglist/app/views.py:61} DEBUG - user with username kasulani registered successfully
+[2017-08-17 16:33:45,767] {/root/Projects/andela/shoppinglist/app/views.py:21} DEBUG - Index: POST data ImmutableMultiDict([('username', u'kasulani'), ('password', u'king12')])
+[2017-08-17 16:33:45,768] {/root/Projects/andela/shoppinglist/app/views.py:30} DEBUG - successfully logged in user with username: kasulani and now redirecting user to dashboard
+[2017-08-17 16:33:56,454] {/root/Projects/andela/shoppinglist/app/views.py:83} DEBUG - Create List: POST data {}
+[2017-08-17 16:34:07,062] {/root/Projects/andela/shoppinglist/app/views.py:97} DEBUG - Create List: POST data ImmutableMultiDict([('description', u'my dooms day preparation list'), ('title', u'dooms day')])
+[2017-08-17 16:34:50,396] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 16:35:56,785] {/root/Projects/andela/shoppinglist/app/views.py:48} DEBUG - Signup: POST data ImmutableMultiDict([('username', u'kasulani'), ('password1', u'king12'), ('password2', u'king12'), ('email', u'kasulani@gmail.com')])
+[2017-08-17 16:35:56,786] {/root/Projects/andela/shoppinglist/app/views.py:61} DEBUG - user with username kasulani registered successfully
+[2017-08-17 16:36:19,330] {/root/Projects/andela/shoppinglist/app/views.py:21} DEBUG - Index: POST data ImmutableMultiDict([('username', u'kasulani'), ('password', u'king12')])
+[2017-08-17 16:36:19,331] {/root/Projects/andela/shoppinglist/app/views.py:30} DEBUG - successfully logged in user with username: kasulani and now redirecting user to dashboard
+[2017-08-17 16:36:24,917] {/root/Projects/andela/shoppinglist/app/views.py:83} DEBUG - View List: POST data {}
+[2017-08-17 16:36:52,298] {/root/Projects/andela/shoppinglist/app/views.py:97} DEBUG - Create List: POST data ImmutableMultiDict([('description', u'my dooms day preparation list'), ('title', u'dooms day')])
+[2017-08-17 16:38:13,743] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 16:38:51,509] {/root/Projects/andela/shoppinglist/app/views.py:48} DEBUG - Signup: POST data ImmutableMultiDict([('username', u'kasulani'), ('password1', u'king12'), ('password2', u'king12'), ('email', u'kasulani@gmail.com')])
+[2017-08-17 16:38:51,510] {/root/Projects/andela/shoppinglist/app/views.py:61} DEBUG - user with username kasulani registered successfully
+[2017-08-17 16:38:58,441] {/root/Projects/andela/shoppinglist/app/views.py:21} DEBUG - Index: POST data ImmutableMultiDict([('username', u'kasulani'), ('password', u'king12')])
+[2017-08-17 16:38:58,442] {/root/Projects/andela/shoppinglist/app/views.py:30} DEBUG - successfully logged in user with username: kasulani and now redirecting user to dashboard
+[2017-08-17 16:39:04,743] {/root/Projects/andela/shoppinglist/app/views.py:84} DEBUG - View List: POST data {}
+[2017-08-17 16:39:30,321] {/root/Projects/andela/shoppinglist/app/views.py:98} DEBUG - Create List: POST data ImmutableMultiDict([('description', u'test'), ('title', u'dooms day')])
+[2017-08-17 16:41:59,130] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 16:42:23,493] {/root/Projects/andela/shoppinglist/app/views.py:48} DEBUG - Signup: POST data ImmutableMultiDict([('username', u'kasulani'), ('password1', u'king12'), ('password2', u'king12'), ('email', u'kasulani@gmail.com')])
+[2017-08-17 16:42:23,494] {/root/Projects/andela/shoppinglist/app/views.py:61} DEBUG - user with username kasulani registered successfully
+[2017-08-17 16:42:31,796] {/root/Projects/andela/shoppinglist/app/views.py:21} DEBUG - Index: POST data ImmutableMultiDict([('username', u'kasulani'), ('password', u'king12')])
+[2017-08-17 16:42:31,797] {/root/Projects/andela/shoppinglist/app/views.py:30} DEBUG - successfully logged in user with username: kasulani and now redirecting user to dashboard
+[2017-08-17 16:42:39,303] {/root/Projects/andela/shoppinglist/app/views.py:84} DEBUG - View List: POST data {}
+[2017-08-17 16:43:34,499] {/root/Projects/andela/shoppinglist/app/views.py:98} DEBUG - Create List: POST data ImmutableMultiDict([('description', u'test'), ('title', u'dooms day')])
+[2017-08-17 16:43:34,499] {/root/Projects/andela/shoppinglist/app/views.py:105} DEBUG - Create List: POST data <app.models.User object at 0xb61d738c>
+[2017-08-17 16:45:50,564] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 16:46:52,090] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 16:48:05,734] {/root/Projects/andela/shoppinglist/app/views.py:48} DEBUG - Signup: POST data ImmutableMultiDict([('username', u'kasulani'), ('password1', u'king12'), ('password2', u'king12'), ('email', u'kasulani@gmail.com')])
+[2017-08-17 16:48:05,736] {/root/Projects/andela/shoppinglist/app/views.py:61} DEBUG - user with username kasulani registered successfully
+[2017-08-17 16:48:26,402] {/root/Projects/andela/shoppinglist/app/views.py:21} DEBUG - Index: POST data ImmutableMultiDict([('username', u'kasulani'), ('password', u'king12')])
+[2017-08-17 16:48:26,404] {/root/Projects/andela/shoppinglist/app/views.py:30} DEBUG - successfully logged in user with username: kasulani and now redirecting user to dashboard
+[2017-08-17 16:48:39,290] {/root/Projects/andela/shoppinglist/app/views.py:84} DEBUG - View List: POST data {}
+[2017-08-17 16:48:46,972] {/root/Projects/andela/shoppinglist/app/views.py:98} DEBUG - Create List: POST data ImmutableMultiDict([('description', u'test'), ('title', u'dooms day')])
+[2017-08-17 16:48:46,972] {/root/Projects/andela/shoppinglist/app/views.py:105} DEBUG - Successful created a list for user kasulani
+[2017-08-17 16:48:47,013] {/root/Projects/andela/shoppinglist/app/views.py:84} DEBUG - View List: POST data {1: [u'dooms day', u'test']}
+[2017-08-17 16:50:42,622] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 16:55:16,377] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 16:55:40,418] {/root/Projects/andela/shoppinglist/app/views.py:48} DEBUG - Signup: POST data ImmutableMultiDict([('username', u'kasulani'), ('password1', u'king12'), ('password2', u'king12'), ('email', u'kasulani@gmail.com')])
+[2017-08-17 16:55:40,419] {/root/Projects/andela/shoppinglist/app/views.py:61} DEBUG - user with username kasulani registered successfully
+[2017-08-17 16:55:53,706] {/root/Projects/andela/shoppinglist/app/views.py:21} DEBUG - Index: POST data ImmutableMultiDict([('username', u'kasulani'), ('password', u'king12')])
+[2017-08-17 16:55:53,707] {/root/Projects/andela/shoppinglist/app/views.py:30} DEBUG - successfully logged in user with username: kasulani and now redirecting user to dashboard
+[2017-08-17 16:56:01,060] {/root/Projects/andela/shoppinglist/app/views.py:84} DEBUG - View List data: 
+[2017-08-17 16:56:11,513] {/root/Projects/andela/shoppinglist/app/views.py:98} DEBUG - Create List: POST data ImmutableMultiDict([('description', u'test'), ('title', u'dooms day')])
+[2017-08-17 16:56:11,513] {/root/Projects/andela/shoppinglist/app/views.py:105} DEBUG - Successful created a list for user kasulani
+[2017-08-17 16:56:11,547] {/root/Projects/andela/shoppinglist/app/views.py:84} DEBUG - View List data: 
+[2017-08-17 16:59:13,476] {/root/Projects/andela/shoppinglist/app/views.py:48} DEBUG - Signup: POST data ImmutableMultiDict([('username', u'kasulani'), ('password1', u'king12'), ('password2', u'king12'), ('email', u'kasulani@gmail.com')])
+[2017-08-17 16:59:56,574] {/root/Projects/andela/shoppinglist/app/views.py:21} DEBUG - Index: POST data ImmutableMultiDict([('username', u'kasulani'), ('password', u'king12')])
+[2017-08-17 16:59:56,575] {/root/Projects/andela/shoppinglist/app/views.py:30} DEBUG - successfully logged in user with username: kasulani and now redirecting user to dashboard
+[2017-08-17 17:00:05,473] {/root/Projects/andela/shoppinglist/app/views.py:84} DEBUG - View List data: 
+[2017-08-17 17:00:34,528] {/root/Projects/andela/shoppinglist/app/views.py:84} DEBUG - View List data: 
+[2017-08-17 17:02:18,134] {/root/Projects/andela/shoppinglist/app/views.py:84} DEBUG - View List data: 
+[2017-08-17 17:11:15,243] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 17:11:15,390] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 17:11:41,885] {/root/Projects/andela/shoppinglist/app/views.py:48} DEBUG - Signup: POST data ImmutableMultiDict([('username', u'kasulani'), ('password1', u'king12'), ('password2', u'king12'), ('email', u'kasulani@gmail.com')])
+[2017-08-17 17:11:41,886] {/root/Projects/andela/shoppinglist/app/views.py:61} DEBUG - user with username kasulani registered successfully
+[2017-08-17 17:11:54,433] {/root/Projects/andela/shoppinglist/app/views.py:21} DEBUG - Index: POST data ImmutableMultiDict([('username', u'kasulani'), ('password', u'king12')])
+[2017-08-17 17:11:54,434] {/root/Projects/andela/shoppinglist/app/views.py:30} DEBUG - successfully logged in user with username: kasulani and now redirecting user to dashboard
+[2017-08-17 17:12:01,794] {/root/Projects/andela/shoppinglist/app/views.py:84} DEBUG - View List data: 
+[2017-08-17 17:12:20,596] {/root/Projects/andela/shoppinglist/app/views.py:98} DEBUG - Create List: POST data ImmutableMultiDict([('description', u'my dooms day preparation list'), ('title', u'dooms day')])
+[2017-08-17 17:12:20,597] {/root/Projects/andela/shoppinglist/app/views.py:105} DEBUG - Successful created a list for user kasulani
+[2017-08-17 17:12:20,623] {/root/Projects/andela/shoppinglist/app/views.py:84} DEBUG - View List data: 
+[2017-08-17 17:13:15,527] {/root/Projects/andela/shoppinglist/app/views.py:84} DEBUG - View List data: 
+[2017-08-17 17:13:44,627] {/root/Projects/andela/shoppinglist/app/views.py:98} DEBUG - Create List: POST data ImmutableMultiDict([('description', u'my camping list'), ('title', u'camping')])
+[2017-08-17 17:13:44,627] {/root/Projects/andela/shoppinglist/app/views.py:105} DEBUG - Successful created a list for user kasulani
+[2017-08-17 17:13:44,655] {/root/Projects/andela/shoppinglist/app/views.py:84} DEBUG - View List data: 
+[2017-08-17 17:16:17,836] {/root/Projects/andela/shoppinglist/app/views.py:84} DEBUG - View List data: 
+[2017-08-17 17:17:41,595] {/root/Projects/andela/shoppinglist/app/views.py:84} DEBUG - View List data: 
+[2017-08-17 17:18:25,821] {/root/Projects/andela/shoppinglist/app/views.py:84} DEBUG - View List data: 
+[2017-08-17 17:20:05,404] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 17:20:13,645] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 17:20:19,869] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 17:25:12,620] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 17:25:31,915] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 17:26:50,494] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 17:28:02,094] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 17:30:22,382] {/root/Projects/andela/shoppinglist/app/views.py:48} DEBUG - Signup: POST data ImmutableMultiDict([('username', u'kasulani'), ('password1', u'king12'), ('password2', u'king12'), ('email', u'kasulani@gmail.com')])
+[2017-08-17 17:30:22,382] {/root/Projects/andela/shoppinglist/app/views.py:61} DEBUG - user with username kasulani registered successfully
+[2017-08-17 17:30:40,231] {/root/Projects/andela/shoppinglist/app/views.py:21} DEBUG - Index: POST data ImmutableMultiDict([('username', u'kasulani'), ('password', u'king12')])
+[2017-08-17 17:30:40,232] {/root/Projects/andela/shoppinglist/app/views.py:30} DEBUG - successfully logged in user with username: kasulani and now redirecting user to dashboard
+[2017-08-17 17:30:47,272] {/root/Projects/andela/shoppinglist/app/views.py:84} DEBUG - View List data: 
+[2017-08-17 17:30:56,058] {/root/Projects/andela/shoppinglist/app/views.py:98} DEBUG - Create List: POST data ImmutableMultiDict([('description', u'my dooms day preparation list'), ('title', u'dooms day')])
+[2017-08-17 17:30:56,059] {/root/Projects/andela/shoppinglist/app/views.py:105} DEBUG - Successful created a list for user kasulani
+[2017-08-17 17:30:56,134] {/root/Projects/andela/shoppinglist/app/views.py:84} DEBUG - View List data: 
+[2017-08-17 17:31:07,123] {/root/Projects/andela/shoppinglist/app/views.py:98} DEBUG - Create List: POST data ImmutableMultiDict([('description', u'my camping list'), ('title', u'camping')])
+[2017-08-17 17:31:07,124] {/root/Projects/andela/shoppinglist/app/views.py:105} DEBUG - Successful created a list for user kasulani
+[2017-08-17 17:31:07,151] {/root/Projects/andela/shoppinglist/app/views.py:84} DEBUG - View List data: 
+[2017-08-17 17:32:21,794] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 17:32:41,485] {/root/Projects/andela/shoppinglist/app/views.py:48} DEBUG - Signup: POST data ImmutableMultiDict([('username', u'kasulani'), ('password1', u'king12'), ('password2', u'king12'), ('email', u'kasulani@gmail.com')])
+[2017-08-17 17:32:41,487] {/root/Projects/andela/shoppinglist/app/views.py:61} DEBUG - user with username kasulani registered successfully
+[2017-08-17 17:32:52,982] {/root/Projects/andela/shoppinglist/app/views.py:21} DEBUG - Index: POST data ImmutableMultiDict([('username', u'kasulani'), ('password', u'king12')])
+[2017-08-17 17:32:52,982] {/root/Projects/andela/shoppinglist/app/views.py:30} DEBUG - successfully logged in user with username: kasulani and now redirecting user to dashboard
+[2017-08-17 17:33:00,963] {/root/Projects/andela/shoppinglist/app/views.py:84} DEBUG - View List data: 
+[2017-08-17 17:33:22,699] {/root/Projects/andela/shoppinglist/app/views.py:98} DEBUG - Create List: POST data ImmutableMultiDict([('description', u'my dooms day preparation list'), ('title', u'dooms day')])
+[2017-08-17 17:33:22,700] {/root/Projects/andela/shoppinglist/app/views.py:105} DEBUG - Successful created a list for user kasulani
+[2017-08-17 17:33:22,735] {/root/Projects/andela/shoppinglist/app/views.py:84} DEBUG - View List data: 
+[2017-08-17 17:33:36,438] {/root/Projects/andela/shoppinglist/app/views.py:98} DEBUG - Create List: POST data ImmutableMultiDict([('description', u'my camping list'), ('title', u'camping')])
+[2017-08-17 17:33:36,439] {/root/Projects/andela/shoppinglist/app/views.py:105} DEBUG - Successful created a list for user kasulani
+[2017-08-17 17:33:36,486] {/root/Projects/andela/shoppinglist/app/views.py:84} DEBUG - View List data: 
+[2017-08-17 17:35:34,395] {/root/Projects/andela/shoppinglist/app/views.py:84} DEBUG - View List data: 
+[2017-08-17 17:37:22,590] {/root/Projects/andela/shoppinglist/app/views.py:84} DEBUG - View List data: 
+[2017-08-17 17:39:15,315] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 17:40:46,959] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 17:42:15,382] {/root/Projects/andela/shoppinglist/app/views.py:48} DEBUG - Signup: POST data ImmutableMultiDict([('username', u'kasulani'), ('password1', u'king12'), ('password2', u'king12'), ('email', u'kasulani@gmail.com')])
+[2017-08-17 17:42:15,383] {/root/Projects/andela/shoppinglist/app/views.py:61} DEBUG - user with username kasulani registered successfully
+[2017-08-17 17:42:31,338] {/root/Projects/andela/shoppinglist/app/views.py:21} DEBUG - Index: POST data ImmutableMultiDict([('username', u'kasulani'), ('password', u'king12')])
+[2017-08-17 17:42:31,339] {/root/Projects/andela/shoppinglist/app/views.py:30} DEBUG - successfully logged in user with username: kasulani and now redirecting user to dashboard
+[2017-08-17 17:42:40,760] {/root/Projects/andela/shoppinglist/app/views.py:84} DEBUG - View List data: 
+[2017-08-17 17:42:56,542] {/root/Projects/andela/shoppinglist/app/views.py:98} DEBUG - Create List: POST data ImmutableMultiDict([('description', u'my dooms day preparation list'), ('title', u'dooms day')])
+[2017-08-17 17:42:56,542] {/root/Projects/andela/shoppinglist/app/views.py:105} DEBUG - Successful created a list for user kasulani
+[2017-08-17 17:42:56,576] {/root/Projects/andela/shoppinglist/app/views.py:84} DEBUG - View List data: 
+[2017-08-17 17:43:04,821] {/root/Projects/andela/shoppinglist/app/views.py:98} DEBUG - Create List: POST data ImmutableMultiDict([('description', u'my camping list'), ('title', u'camping')])
+[2017-08-17 17:43:04,821] {/root/Projects/andela/shoppinglist/app/views.py:105} DEBUG - Successful created a list for user kasulani
+[2017-08-17 17:43:04,900] {/root/Projects/andela/shoppinglist/app/views.py:84} DEBUG - View List data: 
+[2017-08-17 17:43:55,162] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-17 17:44:33,687] {/root/Projects/andela/shoppinglist/app/views.py:48} DEBUG - Signup: POST data ImmutableMultiDict([('username', u'kasulani'), ('password1', u'king12'), ('password2', u'king12'), ('email', u'kasulani@gmail.com')])
+[2017-08-17 17:44:33,688] {/root/Projects/andela/shoppinglist/app/views.py:61} DEBUG - user with username kasulani registered successfully
+[2017-08-17 17:44:45,772] {/root/Projects/andela/shoppinglist/app/views.py:21} DEBUG - Index: POST data ImmutableMultiDict([('username', u'kasulani'), ('password', u'king12')])
+[2017-08-17 17:44:45,773] {/root/Projects/andela/shoppinglist/app/views.py:30} DEBUG - successfully logged in user with username: kasulani and now redirecting user to dashboard
+[2017-08-17 17:44:55,030] {/root/Projects/andela/shoppinglist/app/views.py:84} DEBUG - View List data: 
+[2017-08-17 17:45:04,670] {/root/Projects/andela/shoppinglist/app/views.py:98} DEBUG - Create List: POST data ImmutableMultiDict([('description', u'my dooms day preparation list'), ('title', u'dooms day')])
+[2017-08-17 17:45:04,671] {/root/Projects/andela/shoppinglist/app/views.py:105} DEBUG - Successful created a list for user kasulani
+[2017-08-17 17:45:04,721] {/root/Projects/andela/shoppinglist/app/views.py:84} DEBUG - View List data: 
+[2017-08-17 17:45:15,608] {/root/Projects/andela/shoppinglist/app/views.py:98} DEBUG - Create List: POST data ImmutableMultiDict([('description', u'my camping list'), ('title', u'camping')])
+[2017-08-17 17:45:15,608] {/root/Projects/andela/shoppinglist/app/views.py:105} DEBUG - Successful created a list for user kasulani
+[2017-08-17 17:45:15,639] {/root/Projects/andela/shoppinglist/app/views.py:84} DEBUG - View List data: 
+[2017-08-17 17:45:19,327] {/root/Projects/andela/shoppinglist/app/views.py:84} DEBUG - View List data: 

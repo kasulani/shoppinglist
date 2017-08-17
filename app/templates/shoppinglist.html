@@ -4,15 +4,23 @@
 {% block content %}
 <div class="col-sm-9 col-sm-offset-3 col-md-4 col-md-offset-2 main">
     <!-- form start -->
-    <form role="form">
+    <form role="form" action="/add/list" method="post">
         <div class="box-body">
             <div class="form-group">
-                <label for="exampleInputEmail1">Name</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter a name for your shopping list">
+                <label for="listname">Name for your list</label>
+                {% if a_list %}
+                <input type="text" value={{a_list[0]}} class="form-control" name="title" id="listname" placeholder="Enter a name for your shopping list">
+                {% else %}
+                <input type="text" class="form-control" name="title" id="listname" placeholder="Enter a name for your shopping list">
+                {% endif %}
             </div>
             <div class="form-group">
-                <label for="description">Description</label>
-                <input type="password" class="form-control" id="description" placeholder="Enter a short description for your shopping list">
+                <label for="iddescription">Description</label>
+                {% if a_list %}
+                <input type="text" value={{a_list[1]}} class="form-control" name="description" id="iddescription" placeholder="Enter a short description for your shopping list">
+                {% else %}
+                <input type="text" class="form-control" name="description" id="iddescription" placeholder="Enter a short description for your shopping list">
+                {% endif %}
             </div>
         </div>
 
@@ -20,14 +28,50 @@
             <button type="submit" class="btn btn-primary">Save list</button>
         </div>
     </form>
+    <div class="table-responsive">
+        <!-- Table of lists that have been created-->
+        {% if lists %}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Name of list</th>
+                      <th>Description</th>
+                      <th colspan="2">Operation</th>
+                    </tr>
+                </thead>
+                <!--table body-->
+                <tbody>
+                {% for key, value in lists.items() %}
+                    <tr>
+                        <td>
+                            <a href="#">{{ key }}</a>
+                        </td>
+                        <td>{{ value[0] }}</td>
+                        <td>{{ value[1] }}</td>
+                        <td class="text-right"><a href="{{ url_for('edit_list',list_id = key) }}">edit</a></td>
+                        <td class="text-right"><a href="{{ url_for('delete_list',list_id = key) }}">delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody><!-- end of table body-->
+            </table>   <!--end of table-->
+
+        {% else %}
+            <div class="items">
+                <h4 class="text-center text-color">You have no lists </h4>
+            </div>
+
+        {% endif %}
+    </div>
 </div>
 <div class="col-sm-9 col-md-4 main">
-    <div>
+    <!-- <div>
         <ul class="nav nav-pills nav-stacked">
             <li><a href="#"><i class="fa fa-inbox"></i>Create a new list</a></li>
             <li><a href="#"><i class="fa fa-envelope-o"></i>Delete this list</a></li>
             <li><a href="#"><i class="fa fa-file-text-o"></i>Add Items to this list</a></li>
         </ul>
-    </div>
+    </div>-->
 </div>
 {% endblock %}

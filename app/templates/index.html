@@ -23,6 +23,12 @@
             </p>
         </div>
         <div class="col-lg-4">
+            {% if error %}
+                <div class=" alert alert-danger alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                    <p class="error">{{ error }}</p>
+                </div>
+		  	{% endif %}
           <form class="margin-base-vertical" action="/" method="post">
               <p class="input-group">
                   <span class="input-group-addon"><span class="icon-user"></span></span>
