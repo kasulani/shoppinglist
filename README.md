@@ -25,8 +25,8 @@ to build user interfaces
 ## Tests
 To run tests, go to your command line prompt and execute the following command
 ```sh
-   $ cd shoppinglist
-   $ python test_shoppinglist.py
+   $ cd shoppinglist/app
+   $ python test_models.py
 ```
 ## TODO
 - build a wireframe
