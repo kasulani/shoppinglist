@@ -1,4 +1,5 @@
 # ShoppingList
+[![Coverage Status](https://coveralls.io/github/kasulani/shoppinglist/badge.svg?branch=master)](https://coveralls.io/github/kasulani/shoppinglist?branch=master)
 [![Build Status](https://travis-ci.org/kasulani/Shoppinglist.svg?branch=master)](https://travis-ci.org/kasulani/shoppinglist)
 ## About
 This is an application that allows to record and share things they want
