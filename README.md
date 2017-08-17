@@ -16,8 +16,8 @@ shopping lists with others.
 - Python 2.7.1x+. preferably use Python 3.x.x+
 ## Tools
 Tools used during the development of this application are;
-- [Balsamiq](https://balsamiq.com/) - this is a wireframing tool
-- [Flask](http://flask.pocoo.org/) - this is a python microframework
+- [Balsamiq](https://balsamiq.com/) - this is a wire-framing tool
+- [Flask](http://flask.pocoo.org/) - this is a python micro-framework
 - [Bootstrap](http://getbootstrap.com/) - this is a HTML/CSS/JS framework
 - [postgresql](https://www.postgresql.org/) - this is a database server
 - [React](https://facebook.github.io/react/) - this is a java script library
