@@ -393,3 +393,7 @@
 [2017-08-17 18:56:39,886] {/root/Projects/andela/shoppinglist/app/views.py:61} DEBUG - user with username kasulani registered successfully
 [2017-08-17 18:57:50,550] {/root/Projects/andela/shoppinglist/app/views.py:21} DEBUG - Index: POST data ImmutableMultiDict([('username', u'kasulani'), ('password', u'king12')])
 [2017-08-17 18:57:50,551] {/root/Projects/andela/shoppinglist/app/views.py:30} DEBUG - successfully logged in user with username: kasulani and now redirecting user to dashboard
+[2017-08-19 20:06:23,881] {run.py:3} DEBUG - Starting Shopping List application...
+
+[2017-08-19 20:06:24,473] {run.py:3} DEBUG - Starting Shopping List application...
+
