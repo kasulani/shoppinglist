@@ -1,11 +1,9 @@
 language: python
 python:
-  - 2.7.13
-
-cache: pip
+  - "3.5"
 
 install:
-  - pip install - requirements.txt
+  - pip install -r requirements.txt
 
 # command to run tests
 script:
