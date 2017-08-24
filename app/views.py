@@ -84,7 +84,10 @@ def signup():
 def dashboard():
     # get the logged in user lists
     #
-    return render_template('dashboard.html')
+    global auth_token
+    if auth_token is not None:
+        return render_template('dashboard.html')
+    return redirect(url_for('index'))
 
 
 @app.route('/view/list', methods=['GET'])
@@ -192,7 +195,15 @@ def shopping_list_items(list_id):
         reply = requests.get(url, headers=headers)
         content = json.loads(reply.content)
 
-        return render_template('shoppinglistitem.html', list_name=content['title'], list_id=content['id'])
+        url = app.config['LISTS'] + "/items" + "/{}".format(list_id)
+        response = requests.get(url, headers=headers)
+        items = json.loads(response.content)
+        num = len(items)
+
+        return render_template('shoppinglistitem.html',
+                               list_name=content['title'],
+                               list_id=content['id'],
+                               items=items, num=num)
     return redirect(url_for('index'))
 
 
@@ -224,4 +235,25 @@ def add_item():
             except Exception as ex:
                 app.logger.error(ex.message)
         return render_template('shoppinglistitem.html')
+    return redirect(url_for('index'))
+
+
+@app.route('/delete/item/<item_id>/list/<list_id>', methods=['GET'])
+def delete_list_item(item_id, list_id):
+    """
+    This route will delete a shopping list for a particular user
+    :return:
+    """
+    global auth_token
+    if auth_token is not None:
+        app.logger.debug("Deleting item with id: {}".format(item_id))
+        # get the form data and store it in local variables
+        bearer = "Bearer {}".format(auth_token)
+        headers = {'Authorization': bearer, 'content-type': 'application/json'}
+        url = app.config['LISTS'] + "/{}".format(list_id) + "/items/{}".format(item_id)
+        reply = requests.delete(url, headers=headers)
+        content = json.loads(reply.content)
+        app.logger.debug("API response: %s " % content)
+        # redirect user to view list
+        return redirect(url_for('shopping_list'))
     return redirect(url_for('index'))
