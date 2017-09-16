@@ -1,114 +1,113 @@
+# coding=utf-8
 from app import app
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, session
 import requests
 import json
-from app import models
+# from app import models
 
 # Initialise the model that will hold the non persistent data for the application
 # Shopping_List_App = models.ShoppingListApp()
 # current_user = None
 auth_token = None
+num_of_lists = None
 
 
 @app.route('/', methods=['GET', 'POST'])
 # @app.route('/index', methods=['GET'])
 def index():
     """
-    This route will return a login page to enable an already existing users to login and
-    will be redirected to dashboard
-    :return:
+    This route will return a landing page with a login form and a link to a signup page.
+    :return: html page
     """
-    # global Shopping_List_App, current_user
     global auth_token
     error_message = None
     if request.method == 'POST':
-        app.logger.debug("Index: POST data {}".format(request.form))
+        app.logger.debug("index controller: POST data {}".format(request.form))
         # get the form data and store it in local variables
         username = request.form['username']
         password = request.form['password']
         data = {"username": username, "password": password}
-        # handle exception in case api server is not reachable
-        try:
-            # call the endpoint to login
-            reply = requests.post(app.config['LOGIN'], json=data)
-            content = json.loads(reply.content)
-            if 'token' in content:
-                auth_token = content['token']
-                return redirect(url_for('dashboard'))
-            if content['status'] == 'fail':
-                error_message = content['message']
-            app.logger.debug("API response: %s" % content)
-        except Exception as ex:
-            app.logger.error(ex.message)
+        # TODO improve on the security of the login form - use flask-wtf
+        if username != '' and password != '':  # make sure the data in the field is not empty
+            # handle exception in case api server is not reachable
+            try:
+                # call the endpoint to login
+                reply = requests.post(app.config['LOGIN'], json=data)
+                content = json.loads(reply.content)
+                if 'token' in content:
+                    auth_token = content['token']
+                    session['logged_in'] = True
+                    session['username'] = username
+                    return redirect(url_for('dashboard'))
+                if content['status'] == 'fail':
+                    error_message = content['message']
+                app.logger.debug("API response: %s" % content)
+            except Exception as ex:
+                error_message = "Connection refused"
+                app.logger.error(ex.message)
+        else:
+            error_message = "blank field(s) found"
     return render_template('index.html', error=error_message)
 
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     """
-    This route will return a login page to enable new users to register accounts in the
-    shopping list application
-    :return:
+    This route will return a signup page for a new user to register an account
+    :return: html page
     """
-    # global Shopping_List_App
-    global auth_token
-    error_message = None
+    error_message, msg = None, None
+
     if request.method == 'POST':
-        app.logger.debug("Signup: POST data {}".format(request.form))
+        app.logger.debug("signup controller: POST data {}".format(request.form))
         # get the form data and store it in local variables
-        username = request.form['username']
+        # username = request.form['username']
         email = request.form['email']
         password1 = request.form['password1']
         password2 = request.form['password2']
-        if password1 == password2 and email is not None:
+        if password1 == password2 and email != '' and password1 != '' and password2 != '':
             # password entered is the same, go ahead and create the user
-            app.logger.debug('user with username %s registered successfully' % email)
-            data = {"email": email, "password": password1}
+            data = {"username": email, "password": password1}
             # handle exception in case api server is not reachable
             try:
                 # call the endpoint to login
                 reply = requests.post(app.config['REGISTER'], json=data)
                 content = json.loads(reply.content)
                 if content['status'] == 'pass':
-                    return redirect(url_for('index'))
+                    app.logger.debug('user with username %s registered successfully' % email)
+                    msg = content['message']
                 else:
                     error_message = content['message']
                     app.logger.error("API response: %s" % error_message)
                 app.logger.debug("API response: %s" % content)
             except Exception as ex:
+                error_message = "Connection refused"
                 app.logger.error(ex.message)
-    return render_template('signup.html', error=error_message)
+        else:
+            error_message = "blank field(s) found"
+    return render_template('signup.html', error=error_message, feedback=msg)
 
 
 @app.route('/dashboard', methods=['GET'])
 def dashboard():
-    # get the logged in user lists
-    #
-    global auth_token
-    if auth_token is not None:
-        return render_template('dashboard.html')
-    return redirect(url_for('index'))
-
-
-@app.route('/view/list', methods=['GET'])
-def shopping_list():
-    global auth_token
-    if auth_token is not None:
+    """
+    This method will return a dashboard for the login access area, which gives a user a snap shot summary
+    of their account in the shopping list application
+    :return:
+    """
+    global auth_token, num_of_lists
+    if auth_token is not None and session['logged_in']:
         try:
             bearer = "Bearer {}".format(auth_token)
-            headers = {'Authorization': bearer}
-            app.logger.debug("Authorization Header: %s" % headers)
+            headers = {'Authorization': bearer, 'content-type': 'application/json'}
+            # get the logged in user lists
             reply = requests.get(app.config['LISTS'], headers=headers)
             content = json.loads(reply.content)
-            lists = content
-            num = len(lists)
-            if lists is not None:
-                return render_template('shoppinglist.html', num=num, lists=lists)
-            app.logger.debug("API response: %s " % lists)
+            num_of_lists = content["count"]
+            return render_template('dashboard.html', num=num_of_lists, lists=content['lists'])
         except Exception as ex:
             app.logger.error(ex.message)
-
-        return render_template('shoppinglist.html')
+            return render_template('dashboard.html')
     return redirect(url_for('index'))
 
 
@@ -119,7 +118,7 @@ def add_list():
     :return:
     """
     global auth_token
-    if auth_token is not None:
+    if auth_token is not None and session['logged_in']:
         if request.method == 'POST':
             app.logger.debug("Create List: POST data {}".format(request.form))
             # get the form data and store it in local variables
@@ -134,89 +133,120 @@ def add_list():
                 reply = requests.post(app.config['LISTS'], headers=headers, data=json.dumps(data))
                 content = json.loads(reply.content)
                 app.logger.debug("API response: %s " % content)
-                return redirect(url_for('shopping_list'))
             except Exception as ex:
                 app.logger.error(ex.message)
-        return render_template('shoppinglist.html')
+        return redirect(url_for('dashboard'))
     return redirect(url_for('index'))
 
 
-@app.route('/edit/list/<list_id>', methods=['POST', 'GET'])
+@app.route('/edit/list/<list_id>', methods=['GET'])
 def edit_list(list_id):
     """
     This route will update a shopping list for a particular user
     :return:
     """
-    # todo: template for edit needs styling
     global auth_token
-    if auth_token is not None:
-        bearer = "Bearer {}".format(auth_token)
-        headers = {'Authorization': bearer, 'content-type': 'application/json'}
-        # get the list by id
-        url = app.config['LISTS'] + "/{}".format(list_id)
-        reply = requests.get(url, headers=headers)
-        content = json.loads(reply.content)
-        # form the list for rendering on page
-        a_list = [content['id'], content['title'], content['description']]
-        return render_template('editshoppinglist.html', a_list=a_list)
+    if auth_token is not None and session['logged_in']:
+        try:
+            bearer = "Bearer {}".format(auth_token)
+            headers = {'Authorization': bearer, 'content-type': 'application/json'}
+            # get the list by id
+            url = app.config['LISTS'] + "/{}".format(list_id)
+            reply = requests.get(url, headers=headers)
+            content = json.loads(reply.content)
+            app.logger.debug("API response: %s " % content)
+            return render_template('editlist.html', id=list_id, list=content["list"])
+        except Exception as ex:
+            app.logger.error(ex.message)
+            return render_template('editlist.html')
+    return redirect(url_for('index'))
+
+
+@app.route('/update/list', methods=['POST'])
+def update_list():
+    global auth_token
+    if auth_token is not None and session['logged_in']:
+        try:
+            bearer = "Bearer {}".format(auth_token)
+            headers = {'Authorization': bearer, 'content-type': 'application/json'}
+            list_id = request.form['id']
+            name = request.form['title']
+            description = request.form['description']
+            url = app.config['LISTS'] + "/{}".format(list_id)
+            data = {"title": name, "description": description}
+            app.logger.debug("data : %s " % json.dumps(data))
+            reply = requests.put(url, headers=headers, data=json.dumps(data))
+            content = json.loads(reply.content)
+            app.logger.debug("API response: %s " % content)
+            return redirect(url_for('dashboard'))
+        except Exception as ex:
+            app.logger.error(ex.message)
+            return render_template('editlist.html')
     return redirect(url_for('index'))
 
 
 @app.route('/delete/list/<list_id>', methods=['GET'])
 def delete_list(list_id):
     """
-    This route will delete a shopping list for a particular user
+    This method will delete a shopping list for a particular user
     :return:
     """
     global auth_token
     if auth_token is not None:
         app.logger.debug("Deleting List with id: {}".format(list_id))
-        # get the form data and store it in local variables
-        bearer = "Bearer {}".format(auth_token)
-        headers = {'Authorization': bearer, 'content-type': 'application/json'}
-        url = app.config['LISTS'] + "/{}".format(list_id)
-        reply = requests.delete(url, headers=headers)
-        content = json.loads(reply.content)
-        app.logger.debug("API response: %s " % content)
+        try:
+            bearer = "Bearer {}".format(auth_token)
+            headers = {'Authorization': bearer, 'content-type': 'application/json'}
+            url = app.config['LISTS'] + "/{}".format(list_id)
+            reply = requests.delete(url, headers=headers)
+            content = json.loads(reply.content)
+            app.logger.debug("API response: %s " % content)
+        except Exception as ex:
+            app.logger.error(ex.message)
         # redirect user to view list
-        return redirect(url_for('shopping_list'))
+        return redirect(url_for('dashboard'))
     return redirect(url_for('index'))
 
 
-@app.route('/items/<list_id>', methods=['GET', 'POST'])
-def shopping_list_items(list_id):
-    global auth_token
+@app.route('/items/list/<list_id>', methods=['GET'])
+def view_items(list_id):
+    global auth_token, num_of_lists
     if auth_token is not None:
-        app.logger.debug("Items on List with id: {}".format(list_id))
-        # fetch items on this list for view
-        bearer = "Bearer {}".format(auth_token)
-        headers = {'Authorization': bearer, 'content-type': 'application/json'}
-        url = app.config['LISTS'] + "/{}".format(list_id)
-        reply = requests.get(url, headers=headers)
-        content = json.loads(reply.content)
-
-        url = app.config['LISTS'] + "/items" + "/{}".format(list_id)
-        response = requests.get(url, headers=headers)
-        items = json.loads(response.content)
-        num = len(items)
-
-        return render_template('shoppinglistitem.html',
-                               list_name=content['title'],
-                               list_id=content['id'],
-                               items=items, num=num)
+        app.logger.debug("Request to view items on list with id: {}".format(list_id))
+        try:
+            # headers
+            bearer = "Bearer {}".format(auth_token)
+            headers = {'Authorization': bearer, 'content-type': 'application/json'}
+            # get the name of the list using the id
+            url = app.config['LISTS'] + "/{}".format(list_id)
+            reply = requests.get(url, headers=headers)
+            content = json.loads(reply.content)
+            app.logger.debug("API response: %s " % content)
+            list_name = content["list"]["title"]
+            # fetch items on this list for view
+            url = app.config['LISTS'] + "/{}".format(list_id) + "/items"
+            reply = requests.get(url, headers=headers)
+            content = json.loads(reply.content)
+            return render_template('viewitems.html',
+                                   list_name=list_name, list_id=list_id,
+                                   num=num_of_lists, items=content['items'])
+        except Exception as ex:
+            app.logger.error(ex.message)
+            return render_template('viewitems.html', list_name=list_name, list_id=list_id, num=num_of_lists)
     return redirect(url_for('index'))
 
 
 @app.route('/add/item', methods=['POST'])
 def add_item():
     """
-    This route will create a new shopping list for a particular user
+    Add an item to a shopping list
     :return:
     """
     global auth_token
-    if auth_token is not None:
+    if auth_token is not None and session['logged_in']:
         if request.method == 'POST':
-            app.logger.debug("Create List: POST data {}".format(request.form))
+            app.logger.debug("Add new item: POST data {}".format(request.form))
+            # get the form data and store it in local variables
             bearer = "Bearer {}".format(auth_token)
             headers = {'Authorization': bearer, 'content-type': 'application/json'}
             try:
@@ -231,29 +261,78 @@ def add_item():
                 reply = requests.post(url, headers=headers, data=json.dumps(data))
                 content = json.loads(reply.content)
                 app.logger.debug("API response: %s " % content)
-                return redirect(url_for('shopping_list'))
             except Exception as ex:
                 app.logger.error(ex.message)
-        return render_template('shoppinglistitem.html')
+        return redirect(url_for('view_items', list_id=list_id))
+    return redirect(url_for('index'))
+
+
+@app.route('/edit/item/<item_id>/list/<list_id>', methods=['GET'])
+def edit_item(item_id, list_id):
+    """
+    This route will render a page for editing a shopping list item
+    :return:
+    """
+    global auth_token
+    if auth_token is not None and session['logged_in']:
+        try:
+            bearer = "Bearer {}".format(auth_token)
+            headers = {'Authorization': bearer, 'content-type': 'application/json'}
+            # get the item by id
+            url = app.config['LISTS'] + "/{}".format(list_id) + "/items/{}".format(item_id)
+            reply = requests.get(url, headers=headers)
+            content = json.loads(reply.content)
+            app.logger.debug("API response: %s " % content)
+            return render_template('edititem.html', list_id=list_id, item_id=item_id, item=content["item"])
+        except Exception as ex:
+            app.logger.error(ex.message)
+            return render_template('editlist.html')
+    return redirect(url_for('index'))
+
+
+@app.route('/update/item', methods=['POST'])
+def update_item():
+    global auth_token
+    if auth_token is not None and session['logged_in']:
+        try:
+            bearer = "Bearer {}".format(auth_token)
+            headers = {'Authorization': bearer, 'content-type': 'application/json'}
+            list_id = request.form['list_id']
+            item_id = request.form['item_id']
+            name = request.form['name']
+            description = request.form['description']
+            url = app.config['LISTS'] + "/{}".format(list_id) + "/items/{}".format(item_id)
+            data = {"name": name, "description": description}
+            app.logger.debug("data : %s " % json.dumps(data))
+            reply = requests.put(url, headers=headers, data=json.dumps(data))
+            content = json.loads(reply.content)
+            app.logger.debug("API response: %s " % content)
+            return redirect(url_for('view_items', list_id=list_id))
+        except Exception as ex:
+            app.logger.error(ex.message)
+            return render_template('edititem.html')
     return redirect(url_for('index'))
 
 
 @app.route('/delete/item/<item_id>/list/<list_id>', methods=['GET'])
-def delete_list_item(item_id, list_id):
+def delete_item(item_id, list_id):
     """
-    This route will delete a shopping list for a particular user
+    This method will delete a shopping list item for a particular user
     :return:
     """
     global auth_token
     if auth_token is not None:
         app.logger.debug("Deleting item with id: {}".format(item_id))
-        # get the form data and store it in local variables
-        bearer = "Bearer {}".format(auth_token)
-        headers = {'Authorization': bearer, 'content-type': 'application/json'}
-        url = app.config['LISTS'] + "/{}".format(list_id) + "/items/{}".format(item_id)
-        reply = requests.delete(url, headers=headers)
-        content = json.loads(reply.content)
-        app.logger.debug("API response: %s " % content)
-        # redirect user to view list
-        return redirect(url_for('shopping_list'))
+        try:
+            # get the form data and store it in local variables
+            bearer = "Bearer {}".format(auth_token)
+            headers = {'Authorization': bearer, 'content-type': 'application/json'}
+            url = app.config['LISTS'] + "/{}".format(list_id) + "/items/{}".format(item_id)
+            reply = requests.delete(url, headers=headers)
+            content = json.loads(reply.content)
+            app.logger.debug("API response: %s " % content)
+        except Exception as ex:
+            app.logger.error(ex.message)
+        # redirect user to view list items
+        return redirect(url_for('view_items', list_id=list_id))
     return redirect(url_for('index'))

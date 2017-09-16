@@ -1,58 +1,42 @@
-{% extends "base.html" %}
-{% block title %} Shopping List - Your Shopping List in one place{% endblock%}
+{% extends "base1.html" %}
+{% block pagetitle %}All your Shopping Lists in one place{% endblock%}
 {% block content %}
-<div class="container">
-		<div class="masthead">
-        <nav>
-          <ul class="nav nav-justified">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Team</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Downloads</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
-		<div class="row">
-        <div class="col-lg-6">
-          <h1 class="margin-base-vertical">Shopping List</h1>
-            <p> Welcome to Shopping List.</p>
-            <p>
-                This is an application that allows to record and share things you want to spend money on and keep track of your shopping lists and the past part of it all is that you can share your Shopping List with your friends.
-            </p>
-        </div>
-        <div class="col-lg-4">
-            {% if error %}
-                <div class=" alert alert-danger alert-dismissable">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-                    <p class="error">{{ error }}</p>
-                </div>
-		  	{% endif %}
-          <form class="margin-base-vertical" action="/" method="post">
-              <p class="input-group">
-                  <span class="input-group-addon"><span class="icon-user"></span></span>
-                  <input type="text" class="form-control input-lg" name="username" placeholder="enter your user name here" />
-              </p>
-              <p class="input-group">
-                  <span class="input-group-addon"><span class="icon-lock"></span></span>
-                  <input type="password" class="form-control input-lg" name="password" placeholder="enter your password here" />
-              </p>
-              <p>
-                  <button type="submit" class="btn btn-success btn-lg">login</button>
-              </p>
-              <p>
-                  <small>
-                      <a href="#">I forgot my password</a><br>
-                      <a href="/signup">Don't have an account? Sign up here</a>
-                  </small>
-              </p>
-          </form>
-       </div>
-      </div>
-		<!-- Site footer -->
-      <footer class="footer">
-        <p>&copy; 2016 Make.Create.Invent, Inc.</p>
-      </footer>
-</div> <!-- //container -->
+<div class="jumbotron">
+    <div class="jumbotron-content">
+        <h1>Shopping List</h1>
+            <div class="row">
+                <div class="col-lg-8">
+                    <p class="lead">
+                        This is an application that allows you to record and share things you want to
+                        spend your money on and keep track of your shopping lists and the best part of
+                        it all is that you can share your Shopping List with your friends.
+                    </p>
+                    <p><a class="btn btn-lg btn-success" href="/signup" role="button">Sign up today</a></p>
+                </div><!-- ./column -->
+                <div class="col-lg-4">
+                    {% if error %}
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong>Error!</strong> {{ error }}
+                    </div>
+                    {% endif %}
+                    <form name="loginForm" action="/" method="POST">
+                        <div id="usernameField" class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+                                <input onchange="validateLoginForm();" name="username" type="email" class="form-control" placeholder="Enter your email here">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></span>
+                                <input name="password" type="password" class="form-control" placeholder="Enter your password here">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-lg btn-success">Sign in</button>
+                    </form>
+                </div><!-- ./column -->
+            </div><!-- ./row -->
+        </div><!-- ./jumbotron content -->
+    </div><!-- ./jumbotron -->
 {% endblock %}

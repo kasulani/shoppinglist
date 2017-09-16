@@ -1,0 +1,38 @@
+{% extends "base2.html" %}
+{% block pagetitle %}Edit List{% endblock %}
+{% block navtabs %}
+<li class="active"><a href="#activity" data-toggle="tab">My Shopping Lists</a></li>
+{% endblock %}
+{% block tabcontent %}
+{# ACTIVITY TAB#}
+<div class="active tab-pane" id="activity">
+	<div class="box">
+		<div class="box-header">
+			<h3 class="box-title">Edit shopping list</h3>
+			<div class="box-tools">
+				<!--<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-item-form">
+					Add an item
+				</button>-->
+			</div>
+		</div>
+		<!-- /.box-header -->
+		<div class="box-body">
+			<form action="{{url_for('update_list')}}" method="post" id="editlistform">
+				<input type="hidden" name="id" value="{{id}}">
+				<div class="form-group">
+					<label for="editListName">Name</label>
+					<input name="title" type="text" {% if list %} value="{{list.title}}" {% endif %} class="form-control" id="editListName" placeholder="Enter a unique name for your list">
+				</div>
+				<div class="form-group">
+					<label for="editListDescription">Description</label>
+					<textarea name="description" class="form-control" rows="3" id="editListDescription" placeholder="Enter a short description about this list">{% if list %}{{list.description}}{% endif %}</textarea>
+				</div>
+			</form>
+		</div>
+		<!-- /.box-body -->
+		<div class="box-footer">
+			<button type="submit" form="editlistform" class="btn btn-sm btn-primary">Save Changes</button>
+		</div><!-- /.box-footer -->
+	</div><!-- /.box -->
+</div><!-- /.tab-pane -->
+{% endblock %}

@@ -1,5 +1,5 @@
 {% extends "base2.html" %}
-{% block pagetitle %}Dashboard{% endblock %}
+{% block pagetitle %}Items{% endblock %}
 {% block navtabs %}
 <li class="active"><a href="#activity" data-toggle="tab">My Shopping Lists</a></li>
 {% endblock %}
@@ -8,77 +8,72 @@
 <div class="active tab-pane" id="activity">
     <div class="box">
         <div class="box-header">
-            {% if lists %}
-            <h3 class="box-title">These are your shopping lists</h3>
-            {% else %}
-            <h3 class="box-title">Welcome! Add your first list</h3>
-            {% endif %}
+            <h3 class="box-title">Shopping list: {{list_name}}</h3>
             <div class="box-tools">
-                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-list-form">
-                    Add a list
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-item-form">
+                    Add item
                 </button>
             </div>
         </div><!-- /.box-header -->
         <div class="box-body no-padding">
-            {% if lists %}
+            {% if items %}
             <table class="table">
                 <thead>
                     <tr>
                         {# <th style="width: 10px">#</th> #}
-                        <th>List</th>
+                        <th>Item</th>
                         <th>Action</th>
-                        <th>Progress</th>
-                        <th style="width: 40px">%</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for alist in lists %}
+                    {% for item in items %}
                     <tr>
-                        {# <td>{{ alist.id }}</td> #}
-                        <td><a id="list_item" href="{{ url_for('view_items',list_id = alist.id) }}">{{ alist.title }}</a></td>
-                        <td><a class="btn btn-primary btn-xs" href="{{ url_for('edit_list',list_id = alist.id) }}">Edit</a>
-                            <a class="btn btn-danger btn-xs" href="{{ url_for('delete_list',list_id = alist.id) }}">Delete</a></td>
+                        {# <td>{{ item.id }}</td> #}
+                        <td><a id="the_item" href="#">{{ item.name }}</a></td>
+                        <td><a class="btn btn-primary btn-xs" href="{{ url_for('edit_item',item_id = item.id,list_id = list_id) }}">Edit</a>
+                            <a class="btn btn-danger btn-xs" href="{{ url_for('delete_item',item_id = item.id,list_id = list_id) }}">Delete</a></td>
                         <td>
                             <div class="progress progress-xs progress-striped active">
                                 <div class="progress-bar progress-bar-primary" style="width: 0%"></div>
                             </div>
                         </td>
-                        <td><span class="badge bg-light-blue">0%</span></td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
             {% else %}
             <div class="container">
-                <h4><small>You have no shopping lists</small></h4>
+                <h4><small>You have no items on this list</small></h4>
             </div>
             {% endif %}
         </div><!-- /.box-body -->
 
-        <!-- modal for adding a shopping list -->
-        <div class="modal fade" id="modal-list-form">
+        <!-- modal for adding a item to a list -->
+        <div class="modal fade" id="modal-item-form">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Create a new shopping list</h4>
+                        <h4 class="modal-title">Add new item</h4>
                     </div>
                     <div class="modal-body">
-                        <form action="{{ url_for('add_list') }}" method="post" id="listform">
+                        <form action="{{ url_for('add_item') }}" method="post" id="itemform">
+                            <input type="hidden" name="list_id" value="{{list_id}}">
                             <div class="form-group">
-                                <label for="listName">Name</label>
-                                <input name="title" type="text" class="form-control" id="listName" placeholder="Enter a unique name for your list">
+                                <label for="itemName">Name</label>
+                                <input name="item_name" type="text" class="form-control" id="itemName" placeholder="Enter a unique name for your item">
                             </div>
                             <div class="form-group">
-                                <label for="listDescription">Description</label>
-                                <textarea name="description" class="form-control" rows="3" id="listDescription" placeholder="Enter a short description about your list"></textarea>
+                                <label for="itemDescription">Description</label>
+                                <textarea name="description" class="form-control" rows="3" id="itemDescription" placeholder="Enter a short description about the item"></textarea>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default btn-sm pull-left" data-dismiss="modal">Close</button>
-                        <button type="submit" form="listform" class="btn btn-sm btn-primary">Create List</button>
+                        <button type="submit" form="itemform" class="btn btn-sm btn-primary">Add item</button>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->

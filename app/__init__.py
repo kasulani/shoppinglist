@@ -10,7 +10,6 @@ from logging.handlers import RotatingFileHandler
 from flask import Flask
 
 app = Flask(__name__, instance_relative_config=True)
-
 # load the config file in instance folder, don't suppress errors (silent=false)
 app.config.from_pyfile('config.cfg', silent=False)
 logfile = app.config['LOGFILE']

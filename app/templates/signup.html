@@ -1,60 +1,53 @@
-{% extends "base.html" %}
-{% block title %}ShoppingList | Sign up{% endblock %}
+{% extends "base1.html" %}
+{% block pagetitle %}Sign up{% endblock %}
 {% block content %}
-<div class="container">
-		<div class="masthead">
-        <nav>
-          <ul class="nav nav-justified">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Team</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Downloads</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
+<div class="jumbotron">
+	<div class="jumbotron-content">
+		<h1>Welcome new user</h1>
 		<div class="row">
-        <div class="col-lg-6">
-			<h1 class="margin-base-vertical">Sign Up</h1>
-			<p>Create a Shopping List account</p>
-			<p>
-				You can create an account to start having fun and we promise it will take a short time
-			</p>
-        </div>
-        <div class="col-lg-4">
-			 {% if error %}
-                <div class=" alert alert-danger alert-dismissable">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-                    <p class="error">{{ error }}</p>
-                </div>
-		  	{% endif %}
-          <form class="margin-base-vertical" action="/signup" method="post">
-			  <p class="input-group">
-				  <span class="input-group-addon"><span class="icon-user"></span></span>
-				  <input type="text" class="form-control input-lg" name="username" placeholder="enter your user name here" />
-			  </p>
-			  <p class="input-group">
-				  <span class="input-group-addon"><span class="icon-envelope"></span></span>
-				  <input type="email" class="form-control input-lg" name="email" placeholder="enter your email address here" />
-			  </p>
-			  <p class="input-group">
-				  <span class="input-group-addon"><span class="icon-lock"></span></span>
-				  <input type="password" class="form-control input-lg" name="password1" placeholder="enter your password here" />
-			  </p>
-			  <p class="input-group">
-				  <span class="input-group-addon"><span class="icon-lock"></span></span>
-				  <input type="password" class="form-control input-lg" name="password2" placeholder="enter your password again here" />
-			  </p>
-			  <p>
-				  <button type="submit" class="btn btn-success btn-lg">create account</button>
-			  </p>
-		  </form>
-       </div>
-      </div>
-		<!-- Site footer -->
-      <footer class="footer">
-        <p>&copy; 2016 Make.Create.Invent, Inc.</p>
-      </footer>
-</div> <!-- //container -->
+			<div class="col-lg-6">
+				<p class="lead">
+					Please provide us some information and we create an account for you to start having fun!
+				</p>
+				<p>We promise it will take a short time.</p>
+				{% if feedback %}
+				<div class="alert alert-success alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<strong>Well done!</strong> {{ feedback }}
+					<a href="/">Click here to login</a>
+				</div>
+				{% endif %}
+			</div><!-- ./column -->
+			<div class="col-lg-6">
+				{% if error %}
+				<div class="alert alert-danger alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<strong>Error!</strong> {{ error }}
+				</div>
+				{% endif %}
+				<form action="/signup" method="POST">
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></span>
+							<input name="email" type="email" class="form-control" placeholder="Enter your email address here">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></span>
+							<input name="password1" type="password" class="form-control" placeholder="Enter your password here">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></span>
+							<input name="password2" type="password" class="form-control" placeholder="Confirm your password here">
+						</div>
+					</div>
+					<button type="submit" class="btn btn-lg btn-success">Create Account</button>
+				</form>
+			</div><!-- ./column -->
+		</div> <!-- ./row -->
+	</div>	<!-- ./jumbotron content -->
+</div><!-- ./jumbotron -->
 {% endblock %}}
