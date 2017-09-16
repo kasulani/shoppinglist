@@ -1,10 +1,13 @@
 language: python
 python:
-  - "3.5"
+  - "2.7.13"
 
 install:
   - pip install -r requirements.txt
 
 # command to run tests
 script:
-  - python app/test_models.py
+  - nosetests --with-coverage app/test_models.py
+
+after_success:
+  - coveralls

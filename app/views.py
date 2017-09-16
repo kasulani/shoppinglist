@@ -410,7 +410,7 @@ def reset_password():
             newpass1 = request.form['newpass1']
             newpass2 = request.form['newpass2']
             username = session['username']
-            if newpass1 == newpass2:  # the new password has to match
+            if newpass1 == newpass2 and newpass1 != '' and newpass2 != '':  # the new password has to match
                 url = app.config['RESET']
                 data = {"username": username, "old_password": oldpass, "new_password": newpass1}
                 app.logger.debug("data : %s " % json.dumps(data))
