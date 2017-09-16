@@ -10,6 +10,8 @@ import json
 # current_user = None
 auth_token = None
 num_of_lists = None
+global_err_msg = None
+global_feedback_msg = None
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -95,16 +97,27 @@ def dashboard():
     of their account in the shopping list application
     :return:
     """
-    global auth_token, num_of_lists
+    global auth_token, num_of_lists, global_feedback_msg, global_err_msg
     if auth_token is not None and session['logged_in']:
         try:
+            # read-in the global messages and reset them to None
+            error_message = global_err_msg
+            msg = global_feedback_msg
+            global_err_msg, global_feedback_msg = None, None
+            #
             bearer = "Bearer {}".format(auth_token)
             headers = {'Authorization': bearer, 'content-type': 'application/json'}
             # get the logged in user lists
             reply = requests.get(app.config['LISTS'], headers=headers)
             content = json.loads(reply.content)
             num_of_lists = content["count"]
-            return render_template('dashboard.html', num=num_of_lists, lists=content['lists'])
+            lists = content['lists']
+            # get the user details
+            reply = requests.get(app.config['USERS'], headers=headers)
+            content = json.loads(reply.content)
+            return render_template('dashboard.html',
+                                   feedback=msg, error=error_message,
+                                   num=num_of_lists, lists=lists, user=content['user'])
         except Exception as ex:
             app.logger.error(ex.message)
             return render_template('dashboard.html')
@@ -164,6 +177,10 @@ def edit_list(list_id):
 
 @app.route('/update/list', methods=['POST'])
 def update_list():
+    """
+    This method will update a list details
+    :return:
+    """
     global auth_token
     if auth_token is not None and session['logged_in']:
         try:
@@ -210,6 +227,11 @@ def delete_list(list_id):
 
 @app.route('/items/list/<list_id>', methods=['GET'])
 def view_items(list_id):
+    """
+    This method will render a view of all items on a particular list
+    :param list_id:
+    :return:
+    """
     global auth_token, num_of_lists
     if auth_token is not None:
         app.logger.debug("Request to view items on list with id: {}".format(list_id))
@@ -292,6 +314,10 @@ def edit_item(item_id, list_id):
 
 @app.route('/update/item', methods=['POST'])
 def update_item():
+    """
+    This method will update an item
+    :return:
+    """
     global auth_token
     if auth_token is not None and session['logged_in']:
         try:
@@ -335,4 +361,71 @@ def delete_item(item_id, list_id):
             app.logger.error(ex.message)
         # redirect user to view list items
         return redirect(url_for('view_items', list_id=list_id))
+    return redirect(url_for('index'))
+
+
+@app.route('/update/profile', methods=['POST'])
+def update_profile():
+    """
+    This method will update user's profile
+    :return:
+    """
+    global auth_token, global_err_msg, global_feedback_msg
+    if auth_token is not None and session['logged_in']:
+        try:
+            bearer = "Bearer {}".format(auth_token)
+            headers = {'Authorization': bearer, 'content-type': 'application/json'}
+            firstname = request.form['firstname']
+            lastname = request.form['lastname']
+            description = request.form['description']
+            url = app.config['USERS']
+            data = {"firstname": firstname, "lastname": lastname, "description": description}
+            app.logger.debug("data : %s " % json.dumps(data))
+            reply = requests.put(url, headers=headers, data=json.dumps(data))
+            content = json.loads(reply.content)
+            if content['status'] == 'pass':
+                global_feedback_msg = content['message']
+            else:
+                global_err_msg = content['message']
+            app.logger.debug("API response: %s " % content)
+        except Exception as ex:
+            global_err_msg = ex.message
+            app.logger.error(ex.message)
+        return redirect(url_for('dashboard'))
+    return redirect(url_for('index'))
+
+
+@app.route('/reset-password', methods=['POST'])
+def reset_password():
+    """
+    This method will reset the user's password who's logged in
+    :return:
+    """
+    global auth_token, global_err_msg, global_feedback_msg
+    if auth_token is not None and session['logged_in']:
+        try:
+            bearer = "Bearer {}".format(auth_token)
+            headers = {'Authorization': bearer, 'content-type': 'application/json'}
+            oldpass = request.form['oldpass']
+            newpass1 = request.form['newpass1']
+            newpass2 = request.form['newpass2']
+            username = session['username']
+            if newpass1 == newpass2:  # the new password has to match
+                url = app.config['RESET']
+                data = {"username": username, "old_password": oldpass, "new_password": newpass1}
+                app.logger.debug("data : %s " % json.dumps(data))
+                reply = requests.post(url, headers=headers, data=json.dumps(data))
+                content = json.loads(reply.content)
+                if content['status'] == 'pass':
+                    global_feedback_msg = content['message']
+                else:
+                    global_err_msg = content['message']
+                app.logger.debug("API response: %s " % content)
+            else:
+                global_err_msg = "Password reset failed because of a password mismatch"
+                app.logger.error("Password mismatch")
+        except Exception as ex:
+            global_err_msg = ex.message
+            app.logger.error(ex.message)
+        return redirect(url_for('dashboard'))
     return redirect(url_for('index'))

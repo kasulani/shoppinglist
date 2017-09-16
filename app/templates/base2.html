@@ -73,7 +73,7 @@
                             </div><!-- /.box-header -->
                             <div class="box-body">
                                 {% if user %}
-                                <p>user.description</p>
+                                <p>{{user.description}}</p>
                                 {% else %}
                                 <p>Add something about yourself, please head over to your profile and complete it.</p>
                                 {% endif %}
@@ -82,6 +82,19 @@
                     </div><!-- ./col -->
 
                     <div class="col-md-9">
+                        {% if feedback %}
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <strong>Well done!</strong> {{ feedback }}
+                        </div>
+                        {% endif %}
+
+                        {% if error %}
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <strong>Error!</strong> {{ error }}
+                        </div>
+                        {% endif %}
                         <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs">
                                 {% block navtabs %}{% endblock %}
@@ -92,18 +105,18 @@
                                 {% block tabcontent %}{% endblock %}
                                 <!-- PROFILE SETTINGS TAB PANE -->
                                 <div class="tab-pane" id="profile">
-                                    <form>
+                                    <form action="{{url_for('update_profile')}}" method="post">
                                         <div class="form-group">
                                             <label for="firstName">First name</label>
-                                            <input type="text" class="form-control" id="firstName" placeholder="Enter your first name">
+                                            <input name="firstname" type="text" {% if user %} value="{{user.firstname}}" {% endif %} class="form-control" id="firstName" placeholder="Enter your first name">
                                         </div>
                                         <div class="form-group">
                                             <label for="lastName">Last name</label>
-                                            <input type="text" class="form-control" id="lastName" placeholder="Enter your last name">
+                                            <input name="lastname" type="text" {% if user %} value="{{user.lastname}}" {% endif %} class="form-control" id="lastName" placeholder="Enter your last name">
                                         </div>
                                         <div class="form-group">
                                             <label for="aboutMe">Description</label>
-                                            <textarea class="form-control" rows="3" id="aboutMe" placeholder="Enter a short description about your self"></textarea>
+                                            <textarea name="description" class="form-control" rows="3" id="aboutMe" placeholder="Enter a short description about your self">{% if user %}{{user.description}}{% endif %}</textarea>
                                         </div>
                                         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-resetpass-form">
                                             Reset Password
@@ -121,18 +134,18 @@
                                                     <h4 class="modal-title">Reset your password</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="#" method="post" id="resetform">
+                                                    <form action="{{url_for('reset_password')}}" method="post" id="resetform">
                                                         <div class="form-group">
                                                             <label for="oldpass">Old password</label>
-                                                            <input type="password" class="form-control" id="oldpass" placeholder="Enter your old password here">
+                                                            <input name="oldpass" type="password" class="form-control" id="oldpass" placeholder="Enter your old password here">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="newpass1">New password</label>
-                                                            <input type="password" class="form-control" id="newpass1" placeholder="Enter your new password here">
+                                                            <input name="newpass1" type="password" class="form-control" id="newpass1" placeholder="Enter your new password here">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="newpass2">Confirm new password</label>
-                                                            <input type="password" class="form-control" id="newpass2" placeholder="Enter your new password again here">
+                                                            <input name="newpass2" type="password" class="form-control" id="newpass2" placeholder="Enter your new password again here">
                                                         </div>
                                                     </form>
                                                 </div>
