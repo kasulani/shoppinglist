@@ -22,21 +22,21 @@
                     <tr>
                         {# <th style="width: 10px">#</th> #}
                         <th>Item</th>
-                        <th>Action</th>
                         <th>Status</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for item in items %}
                     <tr>
                         {# <td>{{ item.id }}</td> #}
-                        <td><a id="the_item" href="#">{{ item.name }}</a></td>
+                        <td><a id="the_item" href="{{ url_for('edit_item',item_id = item.id,list_id = list_id) }}">{{ item.name }}</a></td>
+                        <td>{% if item.status %} <span class="label label-success">bought</span>
+                            {% else %}<span class="label label-warning">not bought</span>
+                            {% endif %}
+                        </td>
                         <td><a class="btn btn-primary btn-xs" href="{{ url_for('edit_item',item_id = item.id,list_id = list_id) }}">Edit</a>
-                            <a class="btn btn-danger btn-xs" href="{{ url_for('delete_item',item_id = item.id,list_id = list_id) }}">Delete</a></td>
-                        <td>
-                            <div class="progress progress-xs progress-striped active">
-                                <div class="progress-bar progress-bar-primary" style="width: 0%"></div>
-                            </div>
+                            <a class="btn btn-danger btn-xs" href="{{ url_for('delete_item',item_id = item.id,list_id = list_id) }}">Delete</a>
                         </td>
                     </tr>
                     {% endfor %}

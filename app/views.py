@@ -3,15 +3,13 @@ from app import app
 from flask import render_template, request, redirect, url_for, session
 import requests
 import json
-# from app import models
 
-# Initialise the model that will hold the non persistent data for the application
-# Shopping_List_App = models.ShoppingListApp()
-# current_user = None
+# Global Variables
 auth_token = None
 num_of_lists = None
 global_err_msg = None
 global_feedback_msg = None
+# ----------------------------------------------------------------------------------------------------------
 
 
 @app.route('/', methods=['GET', 'POST'])
