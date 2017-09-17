@@ -90,6 +90,24 @@ def signup():
     return render_template('signup.html', error=error_message, feedback=msg)
 
 
+@app.route('/logout', methods=['GET'])
+def logout():
+    """
+    This method logs out a user
+    :return:
+    """
+    global auth_token
+    # API call
+    reply = requests.get(app.config['LOGOUT'])
+    content = json.loads(reply.content)
+    app.logger.debug("API response: %s" % content)
+    # reset auth token
+    auth_token = None
+    # reset session
+    session['logged_in'] = False
+    return redirect(url_for('index'))
+
+
 @app.route('/dashboard', methods=['GET'])
 def dashboard():
     """
