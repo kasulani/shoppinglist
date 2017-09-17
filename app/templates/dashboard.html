@@ -1,5 +1,9 @@
 {% extends "base2.html" %}
 {% block pagetitle %}Dashboard{% endblock %}
+{% block breadcrumb %}
+<li class="active">
+<span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> Dashboard</li>
+{% endblock %}
 {% block navtabs %}
 <li class="active"><a href="#activity" data-toggle="tab">My Shopping Lists</a></li>
 {% endblock %}

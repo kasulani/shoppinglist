@@ -1,5 +1,13 @@
 {% extends "base2.html" %}
 {% block pagetitle %}Items{% endblock %}
+{% block breadcrumb %}
+<li><a href="{{url_for('dashboard')}}">
+    <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> Dashboard
+</a></li>
+<li class="active">
+    <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> View Items
+</li>
+{% endblock %}
 {% block navtabs %}
 <li class="active"><a href="#activity" data-toggle="tab">My Shopping Lists</a></li>
 {% endblock %}

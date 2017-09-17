@@ -324,7 +324,7 @@ def edit_item(item_id, list_id):
             return render_template('edititem.html', list_id=list_id, item_id=item_id, item=content["item"])
         except Exception as ex:
             app.logger.error(ex.message)
-            return render_template('editlist.html')
+            return render_template('edititem.html')
     return redirect(url_for('index'))
 
 
