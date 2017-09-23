@@ -190,7 +190,7 @@ def update_list():
             list_id = request.form['id']
             name = request.form['title']
             description = request.form['description']
-            url = app.config['LISTS'] + "/{}".format(list_id)
+            url = utility.get_url(app.config['LISTS'] + "/{}".format(list_id))
             data = {"title": name, "description": description}
             app.logger.debug("data : %s " % json.dumps(data))
             reply = requests.put(url, headers=utility.set_headers(), data=json.dumps(data))
