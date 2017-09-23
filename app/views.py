@@ -248,10 +248,14 @@ def view_items(list_id):
     :param list_id:
     :return:
     """
-    global auth_token, logged_in_user
+    global auth_token, logged_in_user, global_err_msg, global_feedback_msg
     if auth_token is not None:
         app.logger.debug("Request to view items on list with id: {}".format(list_id))
         try:
+            # read-in the global messages and reset them to None
+            error_message = global_err_msg
+            msg = global_feedback_msg
+            global_err_msg, global_feedback_msg = None, None
             # headers
             bearer = "Bearer {}".format(auth_token)
             headers = {'Authorization': bearer, 'content-type': 'application/json'}
@@ -267,7 +271,7 @@ def view_items(list_id):
             content = json.loads(reply.content)
             return render_template('viewitems.html',
                                    list_name=list_name, list_id=list_id,
-                                   user=logged_in_user, items=content['items'])
+                                   user=logged_in_user, items=content['items'], feedback=msg, error=error_message)
         except Exception as ex:
             app.logger.error(ex.message)
             return render_template('viewitems.html', list_name=list_name, list_id=list_id, user=logged_in_user)
@@ -280,7 +284,7 @@ def add_item():
     Add an item to a shopping list
     :return:
     """
-    global auth_token, logged_in_user
+    global auth_token, logged_in_user, global_feedback_msg, global_err_msg
     if auth_token is not None and session['logged_in']:
         if request.method == 'POST':
             app.logger.debug("Add new item: POST data {}".format(request.form))
@@ -298,6 +302,11 @@ def add_item():
                 app.logger.debug("Calling endpoint: %s " % url)
                 reply = requests.post(url, headers=headers, data=json.dumps(data))
                 content = json.loads(reply.content)
+                # set global messages
+                if content['status'] == 'pass':
+                    global_feedback_msg = content['message']
+                else:
+                    global_err_msg = content['message']
                 app.logger.debug("API response: %s " % content)
                 # update the global user object, new item has been added
                 reply = requests.get(app.config['USERS'], headers=headers)
