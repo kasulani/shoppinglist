@@ -31,7 +31,7 @@ def index():
             # handle exception in case api server is not reachable
             try:
                 # call the endpoint to login
-                reply = requests.post(app.config['LOGIN'], json=data)
+                reply = requests.post(utility.get_url(app.config['LOGIN']), json=data)
                 content = json.loads(reply.content)
                 if 'token' in content:
                     auth_token = content['token']
