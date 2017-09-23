@@ -272,8 +272,7 @@ def add_item():
             description = request.form['description']
             # a shopping list for user with out any items on it
             data = {"name": item_name, "description": description}
-            app.logger.debug("data : %s " % json.dumps(data))
-            url = app.config['LISTS'] + "/{}".format(list_id) + "/items"
+            url = utility.get_url(app.config['LISTS'] + "/{}".format(list_id) + "/items")
             app.logger.debug("Calling endpoint: %s " % url)
             reply = requests.post(url, headers=utility.set_headers(), data=json.dumps(data))
             content = json.loads(reply.content)
