@@ -280,7 +280,7 @@ def add_item():
     Add an item to a shopping list
     :return:
     """
-    global auth_token
+    global auth_token, logged_in_user
     if auth_token is not None and session['logged_in']:
         if request.method == 'POST':
             app.logger.debug("Add new item: POST data {}".format(request.form))
@@ -299,6 +299,10 @@ def add_item():
                 reply = requests.post(url, headers=headers, data=json.dumps(data))
                 content = json.loads(reply.content)
                 app.logger.debug("API response: %s " % content)
+                # update the global user object, new item has been added
+                reply = requests.get(app.config['USERS'], headers=headers)
+                content = json.loads(reply.content)
+                logged_in_user = content['user']
             except Exception as ex:
                 app.logger.error(ex.message)
         return redirect(url_for('view_items', list_id=list_id))
