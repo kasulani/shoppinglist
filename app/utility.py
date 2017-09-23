@@ -47,6 +47,6 @@ def get_user_status():
     This utility function will get the current status of the logged
     :return:
     """
-    reply = requests.get(app.config['USERS'], headers=set_headers())
+    reply = requests.get(get_url(app.config['USERS']), headers=set_headers())
     content = json.loads(reply.content)
     views.logged_in_user = content['user']
