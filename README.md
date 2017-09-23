@@ -7,6 +7,8 @@ to spend money on and keep track of their shopping lists.
 The goal of this application is to enable users keep track of their shopping lists and further
 provide an innovative and robust solution that will allow them share their
 shopping lists with others.
+## Live application
+Application can be view online by visiting https://app-shopping-list.herokuapp.com/
 ## Features
 - You can create a user account - Registration
 - You can login and log out - Authorization and Authentication
