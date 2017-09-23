@@ -173,10 +173,10 @@ def edit_list(list_id):
             content = json.loads(reply.content)
             utility.show_view_message(content['status'], content['message'])
             app.logger.debug("API response: %s " % content)
-            return render_template('editlist.html', id=list_id, list=content["list"])
+            return render_template('editlist.html', id=list_id, list=content["list"], user=logged_in_user)
         except Exception as ex:
             app.logger.error(ex.message)
-            return render_template('editlist.html')
+            return render_template('editlist.html', id=list_id, list=None, user=logged_in_user)
     return redirect(url_for('index'))
 
 
