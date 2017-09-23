@@ -406,10 +406,7 @@ def update_profile():
             app.logger.debug("data : %s " % json.dumps(data))
             reply = requests.put(url, headers=headers, data=json.dumps(data))
             content = json.loads(reply.content)
-            if content['status'] == 'pass':
-                global_feedback_msg = content['message']
-            else:
-                global_err_msg = content['message']
+            utility.show_view_message(content['status'], content['message'])
             app.logger.debug("API response: %s " % content)
         except Exception as ex:
             global_err_msg = ex.message
