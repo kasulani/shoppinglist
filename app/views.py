@@ -118,7 +118,7 @@ def dashboard():
             msg = global_feedback_msg
             global_err_msg, global_feedback_msg = None, None
             # get the logged in user lists
-            reply = requests.get(app.config['LISTS'], headers=utility.set_headers())
+            reply = requests.get(utility.get_url(app.config['LISTS']), headers=utility.set_headers())
             content = json.loads(reply.content)
             lists = None
             if content['status'] == 'pass':  # if the status is pass, lists have been found
