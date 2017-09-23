@@ -58,9 +58,7 @@ def signup():
     error_message, msg = None, None
 
     if request.method == 'POST':
-        app.logger.debug("signup controller: POST data {}".format(request.form))
         # get the form data and store it in local variables
-        # username = request.form['username']
         email = request.form['email']
         password1 = request.form['password1']
         password2 = request.form['password2']
@@ -70,7 +68,7 @@ def signup():
             # handle exception in case api server is not reachable
             try:
                 # call the endpoint to login
-                reply = requests.post(app.config['REGISTER'], json=data)
+                reply = requests.post(utility.get_url(app.config['REGISTER']), json=data)
                 content = json.loads(reply.content)
                 if content['status'] == 'pass':
                     app.logger.debug('user with username %s registered successfully' % email)
