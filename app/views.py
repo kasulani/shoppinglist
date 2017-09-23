@@ -146,7 +146,7 @@ def add_list():
                 # a shopping list for user with out any items on it
                 data = {"title": request.form['title'], "description": request.form['description']}
                 app.logger.debug("data : %s " % json.dumps(data))
-                reply = requests.post(app.config['LISTS'], headers=utility.set_headers(), data=json.dumps(data))
+                reply = requests.post(utility.get_url(app.config['LISTS']), headers=utility.set_headers(), data=json.dumps(data))
                 content = json.loads(reply.content)
                 utility.show_view_message(content['status'], content['message'])
                 app.logger.debug("API response: %s " % content)
