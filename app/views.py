@@ -166,7 +166,7 @@ def edit_list(list_id):
     if auth_token is not None and session['logged_in']:
         try:
             # get the list by id
-            url = app.config['LISTS'] + "/{}".format(list_id)
+            url = utility.get_url(app.config['LISTS'] + "/{}".format(list_id))
             reply = requests.get(url, headers=utility.set_headers())
             content = json.loads(reply.content)
             utility.show_view_message(content['status'], content['message'])
