@@ -35,6 +35,3 @@ To run this application in linux, execute the following command
     $ cd shoppinglist
     $ nohup python run.py > logs/shop.log 2>&1>> logs/shop.log & disown
 ```
-## TODO
-- Deploy to heroku
-- Add social networking component
