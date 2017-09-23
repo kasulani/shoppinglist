@@ -297,7 +297,7 @@ def edit_item(item_id, list_id):
     if auth_token is not None and session['logged_in']:
         try:
             # get the item by id
-            url = app.config['LISTS'] + "/{}".format(list_id) + "/items/{}".format(item_id)
+            url = utility.get_url(app.config['LISTS'] + "/{}".format(list_id) + "/items/{}".format(item_id))
             reply = requests.get(url, headers=utility.set_headers())
             content = json.loads(reply.content)
             utility.show_view_message(content['status'], content['message'])
