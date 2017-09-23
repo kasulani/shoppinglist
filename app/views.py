@@ -27,7 +27,6 @@ def index():
         username = request.form['username']
         password = request.form['password']
         data = {"username": username, "password": password}
-        # TODO improve on the security of the login form - use flask-wtf
         if username != '' and password != '':  # make sure the data in the field is not empty
             # handle exception in case api server is not reachable
             try:
@@ -126,14 +125,14 @@ def dashboard():
             # get the logged in user lists
             reply = requests.get(app.config['LISTS'], headers=headers)
             content = json.loads(reply.content)
-            num_of_lists = content["count"]
-            lists = content['lists']
+            lists = None
+            if content['status'] == 'pass':  # if the status is pass, lists have been found
+                lists = content['lists']
             # get the user details
             reply = requests.get(app.config['USERS'], headers=headers)
             content = json.loads(reply.content)
             return render_template('dashboard.html',
-                                   feedback=msg, error=error_message,
-                                   num=num_of_lists, lists=lists, user=content['user'])
+                                   feedback=msg, error=error_message, lists=lists, user=content['user'])
         except Exception as ex:
             app.logger.error(ex.message)
             return render_template('dashboard.html')
