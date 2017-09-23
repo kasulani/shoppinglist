@@ -6,7 +6,7 @@ import json
 
 # Global Variables
 auth_token = None
-num_of_lists = None
+logged_in_user = None
 global_err_msg = None
 global_feedback_msg = None
 # ----------------------------------------------------------------------------------------------------------
@@ -112,7 +112,7 @@ def dashboard():
     of their account in the shopping list application
     :return:
     """
-    global auth_token, num_of_lists, global_feedback_msg, global_err_msg
+    global auth_token, logged_in_user, global_feedback_msg, global_err_msg
     if auth_token is not None and session['logged_in']:
         try:
             # read-in the global messages and reset them to None
@@ -131,8 +131,9 @@ def dashboard():
             # get the user details
             reply = requests.get(app.config['USERS'], headers=headers)
             content = json.loads(reply.content)
+            logged_in_user = content['user']
             return render_template('dashboard.html',
-                                   feedback=msg, error=error_message, lists=lists, user=content['user'])
+                                   feedback=msg, error=error_message, lists=lists, user=logged_in_user)
         except Exception as ex:
             app.logger.error(ex.message)
             return render_template('dashboard.html')
@@ -247,7 +248,7 @@ def view_items(list_id):
     :param list_id:
     :return:
     """
-    global auth_token, num_of_lists
+    global auth_token, logged_in_user
     if auth_token is not None:
         app.logger.debug("Request to view items on list with id: {}".format(list_id))
         try:
@@ -266,10 +267,10 @@ def view_items(list_id):
             content = json.loads(reply.content)
             return render_template('viewitems.html',
                                    list_name=list_name, list_id=list_id,
-                                   num=num_of_lists, items=content['items'])
+                                   user=logged_in_user, items=content['items'])
         except Exception as ex:
             app.logger.error(ex.message)
-            return render_template('viewitems.html', list_name=list_name, list_id=list_id, num=num_of_lists)
+            return render_template('viewitems.html', list_name=list_name, list_id=list_id, user=logged_in_user)
     return redirect(url_for('index'))
 
 
