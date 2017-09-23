@@ -1,5 +1,5 @@
 # coding=utf-8
-from app import app
+from app import app, utility
 from flask import render_template, request, redirect, url_for, session
 import requests
 import json
@@ -303,10 +303,7 @@ def add_item():
                 reply = requests.post(url, headers=headers, data=json.dumps(data))
                 content = json.loads(reply.content)
                 # set global messages
-                if content['status'] == 'pass':
-                    global_feedback_msg = content['message']
-                else:
-                    global_err_msg = content['message']
+                utility.show_view_message(content['status'], content['message'])
                 app.logger.debug("API response: %s " % content)
                 # update the global user object, new item has been added
                 reply = requests.get(app.config['USERS'], headers=headers)
