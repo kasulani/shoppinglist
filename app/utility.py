@@ -8,6 +8,16 @@ import requests
 import json
 
 
+def set_headers():
+    """
+    This utility function will set the authorization header for a request
+    :return: http header
+    """
+    bearer = "Bearer {}".format(views.auth_token)
+    headers = {'Authorization': bearer, 'content-type': 'application/json'}
+    return headers
+
+
 def show_view_message(status, message):
     """
     This utility function will set the global messages
@@ -26,9 +36,6 @@ def get_user_status():
     This utility function will get the current status of the logged
     :return:
     """
-    bearer = "Bearer {}".format(views.auth_token)
-    headers = {'Authorization': bearer, 'content-type': 'application/json'}
-    #
-    reply = requests.get(app.config['USERS'], headers=headers)
+    reply = requests.get(app.config['USERS'], headers=set_headers())
     content = json.loads(reply.content)
     views.logged_in_user = content['user']
