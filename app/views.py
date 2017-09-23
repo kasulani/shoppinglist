@@ -345,9 +345,8 @@ def delete_item(item_id, list_id):
     """
     global auth_token
     if auth_token is not None:
-        app.logger.debug("Deleting item with id: {}".format(item_id))
         try:
-            url = app.config['LISTS'] + "/{}".format(list_id) + "/items/{}".format(item_id)
+            url = utility.get_url(app.config['LISTS'] + "/{}".format(list_id) + "/items/{}".format(item_id))
             reply = requests.delete(url, headers=utility.set_headers())
             content = json.loads(reply.content)
             utility.show_view_message(content['status'], content['message'])
