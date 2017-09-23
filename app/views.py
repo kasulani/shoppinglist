@@ -367,7 +367,7 @@ def update_profile():
     global auth_token, global_err_msg, global_feedback_msg
     if auth_token is not None and session['logged_in']:
         try:
-            url = app.config['USERS']
+            url = utility.get_url(app.config['USERS'])
             data = {"firstname": request.form['firstname'],
                     "lastname": request.form['lastname'],
                     "description": request.form['description']}
