@@ -129,9 +129,7 @@ def dashboard():
             if content['status'] == 'pass':  # if the status is pass, lists have been found
                 lists = content['lists']
             # get the user details
-            reply = requests.get(app.config['USERS'], headers=headers)
-            content = json.loads(reply.content)
-            logged_in_user = content['user']
+            utility.get_user_status()
             return render_template('dashboard.html',
                                    feedback=msg, error=error_message, lists=lists, user=logged_in_user)
         except Exception as ex:
@@ -306,9 +304,7 @@ def add_item():
                 utility.show_view_message(content['status'], content['message'])
                 app.logger.debug("API response: %s " % content)
                 # update the global user object, new item has been added
-                reply = requests.get(app.config['USERS'], headers=headers)
-                content = json.loads(reply.content)
-                logged_in_user = content['user']
+                utility.get_user_status()
             except Exception as ex:
                 app.logger.error(ex.message)
         return redirect(url_for('view_items', list_id=list_id))
