@@ -14,7 +14,10 @@ def get_url(endpoint):
     :param endpoint:
     :return:
     """
+    if not isinstance(endpoint, str):
+        raise Exception('endpoint has to be a string')
     return base_url + endpoint
+
 
 def set_headers():
     """
