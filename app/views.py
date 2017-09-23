@@ -213,7 +213,7 @@ def delete_list(list_id):
     global auth_token
     if auth_token is not None:
         try:
-            url = app.config['LISTS'] + "/{}".format(list_id)
+            url = utility.get_url(app.config['LISTS'] + "/{}".format(list_id))
             reply = requests.delete(url, headers=utility.set_headers())
             content = json.loads(reply.content)
             utility.show_view_message(content['status'], content['message'])
