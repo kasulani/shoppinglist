@@ -234,20 +234,19 @@ def view_items(list_id):
     """
     global auth_token, logged_in_user, global_err_msg, global_feedback_msg
     if auth_token is not None:
-        app.logger.debug("Request to view items on list with id: {}".format(list_id))
         try:
             # read-in the global messages and reset them to None
             error_message = global_err_msg
             msg = global_feedback_msg
             global_err_msg, global_feedback_msg = None, None
             # get the name of the list using the id
-            url = app.config['LISTS'] + "/{}".format(list_id)
+            url = utility.get_url(app.config['LISTS'] + "/{}".format(list_id))
             reply = requests.get(url, headers=utility.set_headers())
             content = json.loads(reply.content)
             app.logger.debug("API response: %s " % content)
             list_name = content["list"]["title"]
             # fetch items on this list for view
-            url = app.config['LISTS'] + "/{}".format(list_id) + "/items"
+            url = utility.get_url(app.config['LISTS'] + "/{}".format(list_id) + "/items")
             reply = requests.get(url, headers=utility.set_headers())
             content = json.loads(reply.content)
             return render_template('viewitems.html',
