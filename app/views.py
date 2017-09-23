@@ -92,7 +92,7 @@ def logout():
     """
     global auth_token
     # API call
-    reply = requests.get(app.config['LOGOUT'])
+    reply = requests.get(utility.get_url(app.config['LOGOUT']))
     content = json.loads(reply.content)
     app.logger.debug("API response: %s" % content)
     # reset auth token
