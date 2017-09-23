@@ -22,7 +22,6 @@ def index():
     global auth_token
     error_message = None
     if request.method == 'POST':
-        app.logger.debug("index controller: POST data {}".format(request.form))
         # get the form data and store it in local variables
         username = request.form['username']
         password = request.form['password']
