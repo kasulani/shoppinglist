@@ -311,7 +311,7 @@ def edit_item(item_id, list_id):
     This route will render a page for editing a shopping list item
     :return:
     """
-    global auth_token
+    global auth_token, logged_in_user
     if auth_token is not None and session['logged_in']:
         try:
             bearer = "Bearer {}".format(auth_token)
@@ -321,10 +321,11 @@ def edit_item(item_id, list_id):
             reply = requests.get(url, headers=headers)
             content = json.loads(reply.content)
             app.logger.debug("API response: %s " % content)
-            return render_template('edititem.html', list_id=list_id, item_id=item_id, item=content["item"])
+            return render_template('edititem.html', list_id=list_id, item_id=item_id,
+                                   item=content["item"], user=logged_in_user)
         except Exception as ex:
             app.logger.error(ex.message)
-            return render_template('edititem.html')
+            return render_template('edititem.html', user=logged_in_user)
     return redirect(url_for('index'))
 
 
