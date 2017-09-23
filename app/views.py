@@ -323,7 +323,7 @@ def update_item():
             item_id = request.form['item_id']
             name = request.form['name']
             description = request.form['description']
-            url = app.config['LISTS'] + "/{}".format(list_id) + "/items/{}".format(item_id)
+            url = utility.get_url(app.config['LISTS'] + "/{}".format(list_id) + "/items/{}".format(item_id))
             data = {"name": name, "description": description}
             app.logger.debug("data : %s " % json.dumps(data))
             reply = requests.put(url, headers=utility.set_headers(), data=json.dumps(data))
