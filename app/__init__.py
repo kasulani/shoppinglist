@@ -12,6 +12,10 @@ from flask import Flask
 app = Flask(__name__, instance_relative_config=True)
 # load the config file in instance folder, don't suppress errors (silent=false)
 app.config.from_pyfile('config.cfg', silent=False)
+# set base url
+base_url = "http://127.0.0.1:5000/"
+if app.config['HEROKU']:
+    base_url = app.config['APIURL']
 logfile = app.config['LOGFILE']
 log_level = app.config['LEVEL']
 # set logging format

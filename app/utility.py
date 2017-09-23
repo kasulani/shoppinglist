@@ -2,11 +2,19 @@
 """
     Utility Functions
 """
-from app import app
+from app import app, base_url
 import views
 import requests
 import json
 
+
+def get_url(endpoint):
+    """
+    This utility function will return a url to be used in a request
+    :param endpoint:
+    :return:
+    """
+    return base_url + endpoint
 
 def set_headers():
     """
