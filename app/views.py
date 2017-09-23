@@ -145,13 +145,12 @@ def add_list():
     if auth_token is not None and session['logged_in']:
         if request.method == 'POST':
             try:
-                name = request.form['title']
-                description = request.form['description']
                 # a shopping list for user with out any items on it
-                data = {"title": name, "description": description}
+                data = {"title": request.form['title'], "description": request.form['description']}
                 app.logger.debug("data : %s " % json.dumps(data))
                 reply = requests.post(app.config['LISTS'], headers=utility.set_headers(), data=json.dumps(data))
                 content = json.loads(reply.content)
+                utility.show_view_message(content['status'], content['message'])
                 app.logger.debug("API response: %s " % content)
             except Exception as ex:
                 app.logger.error(ex.message)
@@ -172,6 +171,7 @@ def edit_list(list_id):
             url = app.config['LISTS'] + "/{}".format(list_id)
             reply = requests.get(url, headers=utility.set_headers())
             content = json.loads(reply.content)
+            utility.show_view_message(content['status'], content['message'])
             app.logger.debug("API response: %s " % content)
             return render_template('editlist.html', id=list_id, list=content["list"])
         except Exception as ex:
@@ -197,6 +197,7 @@ def update_list():
             app.logger.debug("data : %s " % json.dumps(data))
             reply = requests.put(url, headers=utility.set_headers(), data=json.dumps(data))
             content = json.loads(reply.content)
+            utility.show_view_message(content['status'], content['message'])
             app.logger.debug("API response: %s " % content)
             return redirect(url_for('dashboard'))
         except Exception as ex:
@@ -217,6 +218,7 @@ def delete_list(list_id):
             url = app.config['LISTS'] + "/{}".format(list_id)
             reply = requests.delete(url, headers=utility.set_headers())
             content = json.loads(reply.content)
+            utility.show_view_message(content['status'], content['message'])
             app.logger.debug("API response: %s " % content)
         except Exception as ex:
             app.logger.error(ex.message)
@@ -248,7 +250,7 @@ def view_items(list_id):
             list_name = content["list"]["title"]
             # fetch items on this list for view
             url = app.config['LISTS'] + "/{}".format(list_id) + "/items"
-            reply = requests.get(url, headers=headers)
+            reply = requests.get(url, headers=utility.set_headers())
             content = json.loads(reply.content)
             return render_template('viewitems.html',
                                    list_name=list_name, list_id=list_id,
@@ -302,6 +304,7 @@ def edit_item(item_id, list_id):
             url = app.config['LISTS'] + "/{}".format(list_id) + "/items/{}".format(item_id)
             reply = requests.get(url, headers=utility.set_headers())
             content = json.loads(reply.content)
+            utility.show_view_message(content['status'], content['message'])
             app.logger.debug("API response: %s " % content)
             return render_template('edititem.html', list_id=list_id, item_id=item_id,
                                    item=content["item"], user=logged_in_user)
@@ -329,6 +332,7 @@ def update_item():
             app.logger.debug("data : %s " % json.dumps(data))
             reply = requests.put(url, headers=utility.set_headers(), data=json.dumps(data))
             content = json.loads(reply.content)
+            utility.show_view_message(content['status'], content['message'])
             app.logger.debug("API response: %s " % content)
             return redirect(url_for('view_items', list_id=list_id))
         except Exception as ex:
@@ -347,12 +351,10 @@ def delete_item(item_id, list_id):
     if auth_token is not None:
         app.logger.debug("Deleting item with id: {}".format(item_id))
         try:
-            # get the form data and store it in local variables
-            bearer = "Bearer {}".format(auth_token)
-            headers = {'Authorization': bearer, 'content-type': 'application/json'}
             url = app.config['LISTS'] + "/{}".format(list_id) + "/items/{}".format(item_id)
-            reply = requests.delete(url, headers=headers)
+            reply = requests.delete(url, headers=utility.set_headers())
             content = json.loads(reply.content)
+            utility.show_view_message(content['status'], content['message'])
             app.logger.debug("API response: %s " % content)
         except Exception as ex:
             app.logger.error(ex.message)
@@ -404,13 +406,11 @@ def reset_password():
                 app.logger.debug("data : %s " % json.dumps(data))
                 reply = requests.post(url, headers=utility.set_headers(), data=json.dumps(data))
                 content = json.loads(reply.content)
-                if content['status'] == 'pass':
-                    global_feedback_msg = content['message']
-                else:
-                    global_err_msg = content['message']
+                utility.show_view_message(content['status'], content['message'])
                 app.logger.debug("API response: %s " % content)
             else:
-                global_err_msg = "Password reset failed because of a password mismatch"
+                utility.show_view_message(status='fail',
+                                          message="Password reset failed because of a password mismatch")
                 app.logger.error("Password mismatch")
         except Exception as ex:
             global_err_msg = ex.message
