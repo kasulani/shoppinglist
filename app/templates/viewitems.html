@@ -18,7 +18,7 @@
         <div class="box-header">
             <h3 class="box-title">Shopping list: {{list_name}}</h3>
             <div class="box-tools">
-                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-item-form">
+                <button id="add_item_btn" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-item-form">
                     Add item
                 </button>
             </div>
@@ -81,7 +81,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default btn-sm pull-left" data-dismiss="modal">Close</button>
-                        <button type="submit" form="itemform" class="btn btn-sm btn-primary">Add item</button>
+                        <button id="create_item_btn" type="submit" form="itemform" class="btn btn-sm btn-primary">Add item</button>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
